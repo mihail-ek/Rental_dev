@@ -1,0 +1,12 @@
+= simple_form_for(@charity) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, autofocus: true
+    = f.input :description, input_html: { rows: 5 }
+    = f.input :address, input_html: { rows: 2 }
+    = f.input :number
+    = f.input :logo
+
+  .form-actions
+    = f.button :submit

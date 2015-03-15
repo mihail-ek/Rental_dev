@@ -1,0 +1,224 @@
+ul.help-make-change
+  margin: 40px 0 10px
+  li
+    &.help
+      width: 569px
+      padding-right: 12px
+    &.make
+      width: 370px
+      padding: 0 12px
+    &.change
+      width: 172px
+      padding-left: 12px
+    font-family: 'Quicksand', sans-serif
+    color: #b3b3b3
+    padding: 0
+    text:
+      transform: uppercase
+      align: center
+    .name
+      border-bottom: 3px solid #b3b3b3
+      padding: 0 0 15px
+      +font-size(20)
+    .caption
+      padding-top: 15px
+      +font-size(14)
+
+// Causes
+.causes-preferences
+  .nav-tabs
+    margin-top: 33px
+
+#causes-preferences-causes, #causes-preferences-places, #causes-preferences-interests, #collect
+  h1, h2
+    text-align: left
+    display: inline-block
+    margin: 0
+  h1
+    width: 237px
+    +font-size(35)
+  h2
+    +font-size(30)
+  hr
+    margin: 40px 0
+  ul.tags
+    width: 750px
+    margin-bottom: 30px
+    overflow: hidden
+    li
+      float: right
+
+  .choices
+    margin-top: 90px
+  .choice
+    h3
+      width: 200px
+      display: inline-block
+      float: left
+      margin-top: 42px
+      font-size: 24px
+    .row
+      margin-left: 200px
+    .choice-list
+      margin-left: 200px
+    .bloc
+      text-align: center
+      display: inline-block
+      width: 173px
+      font-size: 15px
+      margin: 0 15px 30px 0
+      background: #f2f2f2
+      cursor: pointer
+      cursor: hand
+      &.active
+        background: white
+        img.inactive
+          display: none
+        img.active
+          display: inline
+      img
+        padding: 10px 0 20px
+        &.active
+          display: none
+      &:hover
+        background: white
+    .name
+      margin: 15px 10px 0
+      height: 56px
+      line-height: 56px
+      span
+        display: inline-block
+        vertical-align: middle
+        line-height: 25px
+  .buttons-back-and-next
+    margin-top: 20px
+
+#causes-preferences-causes
+  ul.tags.inline
+    display: none
+
+#causes-preferences-places
+  h1
+    width: 73%
+    +font-size(30)
+  .map
+    margin-top: 30px
+    padding: 50px 30px 50px 50px
+    img
+      padding-right: 45px
+      border-right: 3px solid #f5f5f5
+  .selection
+    padding-left: 20px
+    h4
+      margin-top: 20px
+      +font-size(19)
+    .tags
+      width: 222px
+      margin-top: 30px
+    .tag
+      margin:
+        left: 0
+        top: 4px
+      min-height: 45px
+      margin-bottom: 15px
+      .name
+        margin: 20px
+        position: relative
+        top: 13px
+
+#causes-preferences-interests, #collect
+  h1
+    width: 73%
+    +font-size(30)
+  p
+    margin: 20px 0
+    +font-size(18)
+  .intelligent-matching
+    margin: 35px 0 17px
+    padding: 10px 20px
+    h3
+      display: inline-block
+      margin: 0
+      position: relative
+      left: 23px
+      top: -11px
+    .pull-right
+      text-transform: uppercase
+      +font-size(20)
+      .text
+        position: relative
+        top: -18px
+      [class*="sprites-"]
+        margin: 0 25px
+
+  .sprites-facebook-text
+    position: relative
+    top: 2px
+    left: 4px
+
+  .cover
+    position: relative
+    height: auto
+    min-height: 100px
+    background: none
+    margin:
+      top: 15px
+      bottom: 30px
+    h4
+      position: absolute
+      text-align: center
+      width: 362px
+      bottom: 0
+      color: white
+      text-shadow: 1px 1px #000
+
+  .row
+    padding: 45px 34px
+    margin-bottom: 30px
+    h4
+      +font-size(21)
+    .caption
+      +font-size(18)
+    .span1
+      width: 34px
+      [class*="sprites-"]
+        margin-top: 160px
+    .span3
+      width: 312px
+      &.your-interests
+        width: 282px
+
+#collect
+  h1
+    width: auto
+    margin-top: -3px
+  p
+    margin: 10px 0 36px
+    &.baseline
+      width: 73%
+  .row
+    padding: 0
+  .add-more-projects
+    border: solid 2px black
+    padding: 18px
+    text-align: center
+    margin: -27px 0 38px
+    +font-size(22)
+    +border-radius(5px)
+    div
+      margin-right: 20px
+      position: relative
+      top: 3px
+  .project-progress-stripes-small-background
+    img
+      margin-top: 15px
+      position: relative
+      top: 3px
+    .project-progress-stripes-small
+      left: 69px
+      top: -53px
+      height: 0px
+    .medal
+      float: left
+      left: 207px
+      top: -15px

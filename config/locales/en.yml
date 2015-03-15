@@ -1,0 +1,310 @@
+en:
+  admin:
+    actions:
+      approve_project:
+        menu: Approve Project
+
+  hello: "hello"
+  search: "search"
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      day: "%d"
+      month: "%B"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+      current: "%H:%M"
+      very_short: "%d %b"
+    am: "am"
+    pm: "pm"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+
+    select:
+      prompt: "Please select"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%u%n"
+        unit: "$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: Thousand
+          million: Million
+          billion: Billion
+          trillion: Trillion
+          quadrillion: Quadrillion
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:   "less than 1 second"
+        other: "less than %{count} seconds"
+      x_seconds:
+        one:   "1 second"
+        other: "%{count} seconds"
+      less_than_x_minutes:
+        one:   "less than a minute"
+        other: "less than %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "about 1 hour"
+        other: "about %{count} hours"
+      x_days:
+        one:   "1 day"
+        other: "%{count} days"
+      about_x_months:
+        one:   "about 1 month"
+        other: "about %{count} months"
+      x_months:
+        one:   "1 month"
+        other: "%{count} months"
+      about_x_years:
+        one:   "about 1 year"
+        other: "about %{count} years"
+      over_x_years:
+        one:   "over 1 year"
+        other: "over %{count} years"
+      almost_x_years:
+        one:   "almost 1 year"
+        other: "almost %{count} years"
+    prompts:
+      year:   "Year"
+      month:  "Month"
+      day:    "Day"
+      hour:   "Hour"
+      minute: "Minute"
+      second: "Seconds"
+
+  forms:
+    actions:
+      charity_registration:
+        submit: Register Charity
+      faqs:
+        add_item: Add a FAQ
+        remove_item: Remove this FAQ
+      projects:
+        invite_member: The editor or reporter is not on Makerble yet? Click here to send an invitation.
+        submit_for_approval: Submit for approval
+      projects_changes:
+        add_item: Add a change output
+        remove_item: Remove this change output
+      projects_makes:
+        add_item: Add a budget item
+        remove_item: Remove this budget item
+      sign_in:
+        submit: Sign in
+      sign_up:
+        submit: Sign up
+    hints:
+      welcome_messages:
+        text: This is the message that people will see when they start donating to this project! Show your gratitude and make them feel special!
+    labels:
+      charity_registration:
+        number: Enter your Registered Charity number
+      projects:
+        activities: Describe the activities taking place on this project
+        budget_confirmation: Confirmation that your charity has budget to run this project anyway and can therefore proceed to run this project even if no funds are raised on Makerble
+        budget_items: "What's your budget?"
+        change_outputs: Change outputs
+        change_tags: Other words people might use to describe this type of change or impact on society / the environment
+        faqs: "FAQ's"
+        methods: Related Themes
+        past_experience: Example of how this activity/approach has been used successfully in the past
+        price: £0
+        team_members: Add Team Members
+        total_price: The total price is
+        welcome_messages: Thank You Message
+      projects_makes:
+        cost: Cost (pounds)
+        intent: What it will be used for
+      sign_up:
+        avatar: Add profile picture
+    placeholders:
+      search: Search for projects, bundles and stories
+
+  helpers:
+    approved: Approved
+    back: Back
+    draft: Draft
+    next: Next
+    pending_approval: Pending Approval
+    select:
+      prompt: "Please select"
+    sign_in: Sign in
+    skip_project_creation: Skip creating new project
+    submit:
+      charity_join_request:
+        create: Send Join Request
+      create: 'Create %{model}'
+      update: 'Update %{model}'
+      submit: 'Save %{model}'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "is not included in the list"
+      exclusion: "is reserved"
+      invalid: "is invalid"
+      confirmation: "doesn't match confirmation"
+      accepted: "must be accepted"
+      empty: "can't be empty"
+      blank: "can't be blank"
+      too_long: "is too long (maximum is %{count} characters)"
+      too_short: "is too short (minimum is %{count} characters)"
+      wrong_length: "is the wrong length (should be %{count} characters)"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      odd: "must be odd"
+      even: "must be even"
+
+  activerecord:
+    attributes:
+      charity:
+        chv1: CHV1 Form
+        hmrc_number: HMRC number
+        number: Registered Charity number
+        paying_in_slip: Paying-in Slip
+    errors:
+      template:
+        header:
+          one:    "1 error prohibited this %{model} from being saved"
+          other:  "%{count} errors prohibited this %{model} from being saved"
+        body: "There were problems with the following fields:"
+      messages:
+        models:
+          charity:
+            attributes:
+              is_public: The charity is not yet ready for approval
+        taken: "has already been taken"
+        record_invalid: "Validation failed: %{errors}"
+        <<: *errors_messages
+      full_messages:
+        format: "%{attribute}%{message}"
+
+  layouts:
+    flash_messages:
+      charity_created: Your charity was successfully registered and is now being reviewed for approval
+      charity_join_request_approved: The request made by %{requester} to join charity %{charity} has been approved by %{admin}.
+      charity_join_request_approved_generic: Charity Join Request approved.
+      charity_join_request_received: There is a new Charity Join Request.
+      charity_join_request_rejected: The request made by %{requester} to join charity %{charity} has been rejected.
+      charity_join_request_sent: Charity Join Request sent
+      go_to_dashboard: Go to the Dashboard
+      project_saved: "Your project's data has been saved"
+      project_submitted: Your project was successfully registered and is now being reviewed for approval
+    header:
+      charity_dashboard: Charity Dashboard
+      charity_sign_up: Charity Signup
+      faqs: FAQs
+      get_started: Get started
+      help_make_change: Help Make Change
+      how_makerble_works: How Makerble Works
+      request_invitation: Request an invitation
+      send_invitation: Send invitation
+      sign_in: Sign in
+
+  mailer:
+    charity_join_request_mailer:
+      approve_request_to_charity_admins:
+        subject: "Request to join %{charity} was approved"
+      approve_request_to_requester:
+        subject: "Your request to join %{charity} was approved"
+      create_request:
+        subject: Charity Join Request
+    project_mailer:
+      submit_project:
+        subject: Project submitted for approval
+
+  simple_form:
+    labels:
+      project:
+        help_statement: Describe the need being addressed in 1 sentence
+        help_description: Describe the need being addressed in 1 paragraph
+        beneficiaries: Who or what is being helped? e.g. abandoned babies, endangered turtles, forest threatened by loggers
+        problem_statistic_list: Statistics that frame the problem you are solving
+        help_image: "Upload the project image. Tip: it should communicate who or what is being helped"
+        make_statement: Describe the solution in 1 sentence
+        change_statement: Describe the impact of this project in 1 sentence
+        past_experience_photos: Upload image of evidence
+
+  users:
+    registrations:
+      new:
+        email_alternative: Or with your email address
+        facebook: Complete signup using Facebook
+        title: Sign up
+    sessions:
+      new:
+        email_alternative: Or with your email address
+        facebook: Sign in using Facebook
+        title: Sign in

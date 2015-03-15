@@ -1,0 +1,12 @@
+#content
+  - 4.times do
+    .row
+      - 2.times do
+        .span6.projects-thumbnails
+          = link_to "#", class: 'action pull-right' do
+            See all
+          %h4 Theme / Bundle / Story
+          .bloc
+            - 5.times do
+              = link_to "#" do
+                = image_tag "default.png"

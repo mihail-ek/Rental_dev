@@ -1,0 +1,63 @@
+- is_invitation ||= false
+
+.row.bloc#help-make-change
+  .span4.help
+    .image
+      = image_tag @project.help_image(:small), width: '345px'
+      %h2 Help
+      - if is_invitation
+        .avatar
+          = image_tag 'invitation_avatar.jpg'
+    %p= @project.problem
+
+  .span4.make
+    .image
+      = image_tag @project.make_image(:small), width: '345px'
+      %h2 Make
+      - if @project.current_project_make
+        .avatar
+          = image_tag @project.current_project_make.make.icon(:small), width: '79px'
+      - elsif @project.previous_project_make
+        .avatar
+          = image_tag @project.previous_project_make.make.icon(:small), width: '79px'
+    %p= @project.solution
+
+  .span4.change
+    %h2 Change
+    .list
+      - @project.projects_changes[0, 2].reverse.each do |project_change|
+        - change = project_change.change
+        .impact
+          = image_tag change.icon(:small), width: '130px'
+          .name= truncate change.name, length: 16
+    .project-progress-stripes
+      - (@project.change_progress / 10).times do |index|
+        %div{:class => "sprites-progress-stripe-#{index}"}
+      - (10 - @project.change_progress / 10).times do |index|
+        %div{:class => "sprites-progress-stripe-empty"}
+
+  - if is_invitation
+    .be-a-friend-helping.clearfix
+      %h2 Be 1 of X friends helping Matt make change
+      .pull-right
+        .action
+          %a.call-to-action.btn.btn-large.btn-inverse.btn-empty{:href => "#"}
+            .sprites-arrow-to-right-black.pull-right
+            More about this project
+        .action
+          %a.call-to-action.btn.btn-large.btn-inverse{:href => "#"}
+            .sprites-arrow-to-right.pull-right
+            Help Rowena
+      .pictures
+        - 10.times do
+          = link_to "#" do
+            = image_tag "friends_helping.jpg"
+  - elsif !@project.is_funded
+    .pull-right
+      = link_to checkout_path(@project.id), class: "call-to-action btn btn-large btn-inverse" do
+        .sprites-arrow-to-right.pull-right
+        Help make change
+      - if @is_subscribed
+        .cancel-subscription
+          = link_to cancel_stripe_subscription_path(@project.id) do
+            (click here to cancel the current subscription)

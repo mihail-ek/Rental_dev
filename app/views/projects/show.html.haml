@@ -1,0 +1,106 @@
+.container#project
+  .header-container
+    %h1= @project.name
+    %p
+      by
+      = link_to @project.charity.name, @project.charity
+
+  = render 'help_make_change'
+
+  .row
+    .span8#help-make-column
+      - if params[:action] == "project_stage_fundraising"
+        = render "project_change_media_booth"
+      - elsif params[:action] == "project_stage_development_impact_completion"
+        = render "project_change_update", columns: 2
+
+      .faq
+        %h2 FAQ's
+
+        .faq-list
+          = render 'faq_list', faqs: @project.faqs
+
+        - if user_signed_in? && can?(:create, Faq)
+          = label_tag :question_content, "Can’t find what your looking for? Ask your own question below:"
+          = text_area :question, :content, rows: 10, maxlength: 254
+
+          = link_to nil, class: 'submit btn btn-large btn-inverse', data: { project_id: @project.id } do
+            .sprites-arrow-to-right.pull-right
+            Ask
+
+    .span4#change-column
+      - if @project.makers.any?
+        .total-makers
+          - if false
+            .pull-right.actions
+              = link_to "See all" ,"#"
+          %h2
+            The Makers
+          .bloc.images-only
+            - @project.makers[0,6].each do |maker|
+              = link_to maker do
+                = image_tag maker.avatar(:square), width: '79px'
+
+      .charity-informations
+        %h2 Charity informations
+        .bloc
+          .header
+            - if @charity.logo.exists?
+              = image_tag @charity.logo(:square), width: '140px'
+            - if @charity.leader
+              = image_tag @charity.leader.avatar(:square), width: '140px'
+
+          %ul.unstyled
+            - if @charity.leader
+              %li
+                Project leader:
+                = @charity.leader.name
+            %li
+              Projects completed:
+              = @charity.projects.funded.count
+            %li
+              Location:
+              = @charity.address
+            %li
+              Registered charity number:
+              = @charity.number
+
+          - if false
+            .established-fund-supporters
+              %h4 Established fund supporters
+              - 4.times do
+                = link_to nil do
+                  %img{:alt => "", :src => "http://lorempixel.com/70/70/people"}
+
+      .related-projects
+        - if false
+          .pull-right.actions
+            = link_to "See all" ,"#"
+        %h2
+          Related projects
+        .bloc.images-only
+          - @project.related_projects[0, 6].each do |project|
+            = link_to project do
+              = image_tag project.help_image(:square), width: '79px'
+
+      .change.bloc
+        .score
+          %h5 Project change
+          - @project.change_score.to_s.chars.map(&:to_i).each do |digit|
+            %div{class: "sprites-digit-#{digit}"}
+        .list
+          - @project.projects_changes[0, 2].reverse.each do |project_change|
+            - change = project_change.change
+            .impact
+              = image_tag change.icon(:small), width: '130px'
+              .name= truncate change.name, length: 16
+        .project-progress-stripes
+          - (@project.change_progress / 10).times do |index|
+            %div{:class => "sprites-progress-stripe-#{index}"}
+          - (10 - @project.change_progress / 10).times do |index|
+            %div{:class => "sprites-progress-stripe-empty"}
+
+        - unless @project.funded?
+          = link_to checkout_path(@project.id), class: "call-to-action btn btn-large btn-inverse" do
+            .sprites-arrow-to-right.pull-right
+            Help make change

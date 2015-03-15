@@ -1,0 +1,15 @@
+= simple_form_for(@story) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.hidden_field :project_id, value: params[:project_id] if params[:project_id].present?
+    = f.hidden_field :project_id, value: @story.project_id if @story.project
+    = f.input :text
+    = f.association :change
+    = f.input :number
+
+    - if can? :approve, @story
+      = f.input :approved, label: 'Approved (public)'
+
+  .form-actions
+    = f.button :submit

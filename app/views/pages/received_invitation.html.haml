@@ -1,0 +1,56 @@
+.container#received-invitation
+  .row
+    .header.span12
+      = link_to "#" do
+        .video-thumbnail
+          .sprites-play-button
+          = image_tag "video_thumbnail.jpg"
+      %h1 You have an invitation from Matt
+      %p= Faker::Lorem.sentence(30)
+
+  = render 'projects/help_make_change', is_invitation: true
+  
+  .charity-footer-details
+    = link_to "#" do
+      = image_tag "http://placehold.it/141x127"
+
+    = link_to "#" do
+      = image_tag "http://placehold.it/141x127"
+
+    %ul.unstyled
+      %li Project leader: Mr Sample
+      %li Projects completed: 10
+      %li Locations and Address
+      %li Registered charity number to go here
+    
+    .established-fund-supporters
+      %h5 Established fund supporters
+      - 4.times do  
+        = link_to "#" do
+          = image_tag "http://placehold.it/70x63"
+
+  #questions-and-answers-about-the-project.accordion
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{"data-parent" => "#questions-and-answers-about-the-project", "data-toggle" => "collapse",
+          :href => "#list-of-questions-and-answers-about-the-project"}
+          .pull-right.sprites-plus  
+          See Q&A about this project
+          %span.count (20)
+      
+      #list-of-questions-and-answers-about-the-project.accordion-body.collapse
+        .accordion-inner
+          %h3 Q&A about this project
+
+  #related-projects.accordion
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{"data-parent" => "#related-projects", "data-toggle" => "collapse",
+          :href => "#list-of-related-projects"}
+          .pull-right.sprites-plus  
+          See related projects
+          %span.count (20)
+      
+      #list-of-related-projects.accordion-body.collapse
+        .accordion-inner
+          %h3 Related projects

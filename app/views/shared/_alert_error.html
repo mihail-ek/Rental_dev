@@ -1,0 +1,12 @@
+<script type="text/template" id="alert-error">
+  <%% if(errors.length > 0) { %>
+    <div class="alert alert-error">
+      <ul>
+        <%% _.each(errors, function(error) { %>
+          <li><%%= error %></li>
+        <%% }); %>
+      </ul>
+    </div>
+  <%% } %>
+</script>
+

@@ -1,0 +1,60 @@
+#content
+  - if @user.achievements_of_followings.any?
+    - @user.achievements_of_followings.each do |achievement|
+      .box{:class => "boxportfolio#{columns}"}
+        .boxcontainer.bloc
+          - if achievement.media?
+            .image
+              = image_tag achievement.media(:cover), width: '400px'
+
+          .content{:class => "#{"with-picture" if achievement.media?} #{"without-change" unless achievement.change && achievement.number}"}
+            - if achievement.change && achievement.number
+              .medal
+                = image_tag achievement.change.icon(:small), width: '79px'
+                .count= achievement.number
+
+            = link_to achievement.user do
+              = image_tag achievement.user.avatar(:square), width: '60px'
+            = link_to achievement.project do
+              %h5= achievement.title
+            %p= truncate(achievement.text, length: 255) 
+
+          - if user_signed_in?
+            %hr
+
+            %ul.actions
+              %li
+                = link_to "#", :class => 'like-an-update', :'data-likable-id' => achievement.id,
+                  :'data-likable-type' => "Achievement", 'data-active' => current_user.liked?(achievement) do
+                  .sprites-fav-small
+                  %span.text= current_user.liked?(achievement) ? 'Unfav' : 'Fav'
+                  %span.number{ data: { count: achievement.likes.size } } (#{achievement.likes.size})
+              %li
+                = link_to "#", :class => 'comment-an-update',
+                  :'data-commentable-id' => achievement.id, :'data-commentable-type' => "Achievement" do
+                  .sprites-comment-small
+                  Comment
+                  %span.number{ data: { count: achievement.comments.count } } (#{achievement.comments.count})
+              %li
+                -# = link_to "#" do
+                %span
+                  .sprites-pound-small
+                  Top up
+                  - if false
+                    %span.number (12)
+
+            .comments
+              %hr
+              .comments-list
+                - achievement.comments.each do |comment|
+                  .comment
+                    %span.user= link_to comment.user.name, comment.user
+                    = comment.text
+              .submit
+                %textarea{name: "comment", placeholder: "Write a comment...", maxlength: "250"}
+                = link_to "#", class: "btn btn-inverse", :'data-commentable-id' => achievement.id, :'data-commentable-type' => "Achievement" do
+                  .sprites-arrow-to-right.pull-right
+                  Add comment
+
+  - else
+    No update yet.

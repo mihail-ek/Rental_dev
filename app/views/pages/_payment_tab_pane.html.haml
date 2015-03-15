@@ -1,0 +1,38 @@
+:coffeescript
+  window.STRIPE_PUBLISHABLE_KEY = "#{ENV['STRIPE_PUBLISHABLE_KEY']}"
+
+#payment-steps
+  .step#step1
+    = link_to "Register with Facebook", omniauth_authorize_path(:user, :facebook),
+      remote: true, id: 'sign-in-with-facebook'
+  .step#step2
+    %h3 Do you want to add Gift Aid?
+    
+    - @cart_charities.each do |charity|
+      .declaration
+        = check_box_tag :"gift_aid_charity_#{charity.id}"
+        Please treat as Gift Aid donations all qualifying gifts of money
+        I am making today and will make in future to
+        %strong #{charity.name}.
+        I confirm I have paid or will pay an amount of Income Tax and/or
+        Capital Gains Tax for each tax year (6 April to 5 April) that is
+        at least equal to the amount of tax that the charity will reclaim
+        on my gifts for that tax year. I understand that other taxes such
+        as VAT and Council Tax do not qualify. I understand the charity will
+        reclaim 25p of tax on every £1 that I give on or after 6 April 2008.
+        I will inform the charity via Makerble if I want to cancel this declaration,
+        change my name or home address, or stop paying a suitable amount of income
+        tax or capital gains tax to cover the Gift Aid reclaimed from my donations. 
+      
+    .pull-right
+      = link_to nil, class: "btn btn-large btn-inverse" do
+        Continue
+
+  .step#step3
+    Spend
+    %span.amount £X/#{Settings.subscription_interval}
+    on making change
+
+    #stripe-form
+      = form_tag create_stripe_subscriptions_path(true) do
+        #stripe-checkout-button.btn.btn-large Subscribe with Card

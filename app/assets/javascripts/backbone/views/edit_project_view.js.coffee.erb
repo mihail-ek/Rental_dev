@@ -1,0 +1,31 @@
+App.Views ||= {}
+
+class App.Views.EditProjectView extends Backbone.View
+  el: "#save-project"
+  events:
+    "submit #help-form form": "saveProject"
+    "submit #make-form form": "saveProject"
+    "submit #change-form form": "saveProject"
+    "submit #more-info-form form": "saveProject"
+    "submit #submit-project form": "submitProjectForApprovalOnUpdate"
+
+  saveProject: (e) ->
+    e.preventDefault()
+    $form = $(e.currentTarget)
+    formData = new FormData $form[0]
+    action = $form.attr 'action'
+    $.ajax
+      type: "PUT"
+      url: action
+      data: formData
+      dataType: 'JSON'
+      contentType: false
+      processData: false
+      success: (project) =>
+        @notifyUser "<%= I18n.t('layouts.flash_messages.project_saved') %>"
+        @clearErrors($form)
+      error: (xhr) =>
+        @alertErrors JSON.parse(xhr.responseText).errors
+
+  submitProjectForApprovalOnUpdate: (e) ->
+    @submitProjectForApproval e, "PUT"

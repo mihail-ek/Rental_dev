@@ -1,0 +1,5 @@
+#content
+  #projects-to-add
+    .row
+      - 3.times do |index|
+        = render 'projects/to_add.backup', type: 'button', project: Project.first

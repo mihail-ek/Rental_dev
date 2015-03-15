@@ -1,0 +1,123 @@
+#change-timeline.masthead
+  .container
+    #live-notifications-bar
+      %h4
+        Live notifications bar
+
+    %a.previous-slide{href: ''}
+      %i.sprites-big-arrow-to-left
+    %a.next-slide{href: ''}
+      %i.sprites-big-arrow-to-right
+
+    .content
+      %h2
+        Live Project Update Timeline
+        %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+          %i.icon-info-sign
+
+        %ul.inline.update-timeline
+          %li
+            = link_to nil, :class => "popover-with-html", :title => "12/04/13 - Project name",
+              :"data-content" => "<img src='http://placehold.it/240x60&text=Project' /><h5>1 child re-homed</h5><p>#{Faker::Lorem.sentence(10)}</p>" do
+
+              .sprites-qualifications
+              %p Qualifications
+
+.container
+  .row
+    .span12
+      .row
+        .span4
+          %h2
+            Help
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+              %i.icon-info-sign
+          - 6.times do
+            = image_tag "http://placehold.it/180x150&text=Project"
+
+          .pagination
+            %ul
+              %li
+                %a{:href => "#"} Prev
+              %li
+                %a{:href => "#"} 1
+              %li
+                %a{:href => "#"} 2
+              %li
+                %a{:href => "#"} #{t('helpers.next')}
+
+        .span4
+          %h2
+            Make
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+              %i.icon-info-sign
+
+          .list_carousel
+            -# .carousel_nav
+            -#   %a.prev#car_prev{:href => "#"}
+            -#     %span prev
+            -#   %a.next#car_next{:href => "#"}
+            -#     %span next
+
+            .clearfix
+            %ul.change-list
+              - 2.times do
+                %li.change-item
+                  = link_to nil do
+                    %i.icon-group.icon-4x.icon-border
+                    %p Donation
+                %li.change-item
+                  = link_to nil do
+                    %i.icon-heart.icon-4x.icon-border
+                    %p Donation
+            .clearfix
+
+          .pagination
+            %ul
+              %li
+                %a{:href => "#"} Prev
+              %li
+                %a{:href => "#"} 1
+              %li
+                %a{:href => "#"} 2
+              %li
+                %a{:href => "#"} #{t('helpers.next')}
+
+        .span4
+          .bloc
+            %h2
+              Change
+              %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+                %i.icon-info-sign
+
+            .pull-right
+              = link_to nil do
+                %i.icon-arrow-right.icon-2x.icon-border
+              = link_to nil do
+                %i.icon-envelope.icon-2x.icon-border
+
+            .profile-picture
+              = image_tag "http://placehold.it/215&text=Profile+picture",
+                class: "img-circle"
+
+            %ul.inline.statistics
+              %li
+                = link_to nil do
+                  = pluralize rand(1000), "Friend"
+              %li
+                = link_to nil do
+                  = pluralize rand(1000), "Project"
+              %li
+                = link_to nil do
+                  = pluralize rand(1000), "Followers"
+
+            %h5 Medals earned
+            - 4.times do
+              = link_to nil do
+                %i.icon-thumbs-up.icon-3x.icon-border
+
+  %h2
+    Your update wall
+    %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+      %i.icon-info-sign
+  = render "project_change_update", columns: 3

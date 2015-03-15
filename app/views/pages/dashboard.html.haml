@@ -1,0 +1,88 @@
+.container
+  .page-header
+    %h1
+      Dashboard
+    
+    %ul.nav.nav-list
+      %li.nav-header Design implementation
+      
+      %li
+        %a{:href => '/'}
+          Home - Getting Started
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => '/admin'}
+          Admin panel
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'my-home'}
+          My home
+          %span.label.label-success Done
+
+      %li
+        %a{:href => 'me'}
+          User profile
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'causes-preferences-causes'}
+          Causes preferences: causes
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'causes-preferences-places'}
+          Causes preferences: places
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'causes-preferences-interests'}
+          Causes preferences: interests
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'collect'}
+          Collect
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'charity-or-bundle-home'}
+          Charity or bundle: Home
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'change-store-projects'}
+          Change store: Projects
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'change-store-projects-category'}
+          Change store: Category
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'received-invitation'}
+          Received invitation
+          %span.label.label-success Done
+      
+      %li
+        %a{:href => 'charity-or-bundle-updates'}
+          Charity or bundle: Updates
+          %span.label.label-warning In progress
+
+      - if project = Project.first
+        %li
+          = link_to project do
+            Project
+            %span.label.label-success Done
+      
+      %li
+        %a{:href => 'checkout'}
+          Checkout 
+          %span.label.label-info Wireframe
+          %span.label.label-success Done
+      %li
+        %a{:href => 'gocardless/index'}
+          Subscription test
+          %span.label.label-success Done

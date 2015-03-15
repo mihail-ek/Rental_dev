@@ -1,0 +1,25 @@
+.container#collect
+  .pull-right
+    = link_to checkout_path, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')
+
+  %h1 Playlist
+  %p.baseline The first projects in your playlist are:
+
+  #projects-to-add
+
+  = link_to "#" do
+    .add-more-projects
+      .sprites-plus
+      Add more projects
+
+  .pull-left
+    = link_to nil, class: "back btn btn-large btn-inverse" do
+      .sprites-arrow-to-left.pull-right
+      Back
+
+  .pull-right
+    = link_to checkout_path, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')

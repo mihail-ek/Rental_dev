@@ -1,0 +1,28 @@
+.container
+  .row
+    .span6
+      %h1 Join the waiting list
+
+      = simple_form_for WaitingList.new, html: {method: :post} do |f|
+        .form-field
+          = f.label :email
+          = f.email_field :email
+        .submit
+          = f.button :submit, "Sign up to waiting list"
+
+    .span6
+      %h1 Already got an account?
+      = link_to omniauth_authorize_path('user', :facebook) do
+        .fb-login-button
+          .sprites-facebook
+          Login using Facebook
+      %hr
+      %h3 Or with your email address
+      = simple_form_for(User.new, as: 'user', url: session_path('user')) do |f|
+        .form-inputs
+          = f.input :email, required: false, autofocus: true
+          = f.input :password, required: false
+          = f.input :remember_me, as: :boolean
+        .form-actions
+          = f.button :submit, "Sign in"
+      = link_to "Forgot your password?", new_password_path('user')

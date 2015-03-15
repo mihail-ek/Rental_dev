@@ -1,0 +1,42 @@
+App.Views ||= {}
+
+class App.Views.CharitiesDashboardApprovalsNewStaffView extends Backbone.View
+  initialize: ->
+    @updateJoinRequests()
+
+  el: "#approvals-new-staff"
+  events:
+    "click .manage-join-request": 'manageJoinRequest'
+
+  updateJoinRequests: =>
+    @join_requests = new App.Collections.CharityJoinRequestsCollection()
+    @join_requests.pending().complete (jqXHR, textStatus) =>
+      if textStatus == "success"
+        $('#pending-join-requests').html JST["charities_dashboard/approvals_new_staff"](join_requests: @join_requests.toJSON())
+
+  manageJoinRequest: (event) ->
+    event.preventDefault()
+    $target = $(event.currentTarget)
+    joinRequestId = $target.data 'requestId'
+    action = $target.data 'action'
+    $.ajax
+      type: "POST"
+      url: App.Settings.API_URL + "/charity_join_requests/#{action}"
+      data:
+        id: $target.data('request-id')
+      success: (joinRequest) =>
+        @updateJoinRequests()
+        @notifyUser(action, joinRequest)
+
+  notifyUser: (action, joinRequest) ->
+    template = _.template($('#flash-template').html())
+    data =
+      message: (->
+        if action == "approve"
+          "The request made by #{joinRequest.user_name} to join charity #{joinRequest.charity_name} has been approved by #{joinRequest.admin_name}."
+        else
+          "The request made by #{joinRequest.user_name} to join charity #{joinRequest.charity_name} has been rejected.")()
+      link: ""
+      link_text: ""
+    $('#flashes').html(template(data))
+

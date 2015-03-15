@@ -1,0 +1,33 @@
+.container#causes-preferences-interests
+  .pull-right
+    = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')
+  %h1 Intelligent matching (CURRENT DISABLED)
+  %p
+    Turn on Intelligent Matching to personalise your Playlist
+    with projects inspired by things you’re passionate about.
+
+  .bloc.intelligent-matching
+    .pull-right.switch-button
+      = link_to "#" do
+        %span.text on
+        .div{class: "sprites-switch#{current_user.intelligent_matching ? "-on" : "-off"}"}
+        %span.text off
+    .sprites-thump-up
+    %h3 Turn on intelligent matching?
+
+  .supported-by
+    Makerble intelligent matching powered by
+    .sprites-facebook-text
+
+  .buttons-back-and-next
+    .pull-left
+      = link_to nil, class: "back btn btn-large btn-inverse" do
+        .sprites-arrow-to-left.pull-right
+        Back
+
+    .pull-right
+      = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+        .sprites-arrow-to-right.pull-right
+        = t('helpers.next')

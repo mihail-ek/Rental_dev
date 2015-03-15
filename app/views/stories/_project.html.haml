@@ -1,0 +1,42 @@
+- columns = 3
+.box{:class => "boxportfolio#{columns}"}
+  .boxcontainer.bloc
+    - if story.media?
+      .image
+        = image_tag story.media(:cover), width: '400px'
+
+    .content{:class => "#{"with-picture" if story.media?}"}
+      .medal
+        = image_tag story.change.icon(:small), width: '79px'
+        .count= story.number
+
+      = image_tag story.project.help_image(:square), width: '60px'
+      -# %h5 Matt's homeless shelter has slept 4 people
+      %p= truncate(story.text, length: 255) 
+
+      - if false
+        .pull-right.share
+          .icons
+            = link_to nil do
+              .sprites-facebook-like
+            = link_to nil do
+              .sprites-twitter-share
+
+    %hr
+
+    %ul.actions
+      %li
+        = link_to "#" do
+          .sprites-fav-small
+          Fav
+          %span.number (12)
+      %li
+        = link_to "#" do
+          .sprites-comment-small
+          Comment
+          %span.number (12)
+      %li
+        = link_to "#" do
+          .sprites-pound-small
+          Top up
+          %span.number (12)

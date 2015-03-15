@@ -1,0 +1,7 @@
+%li.tag{"data-id" => id, "data-name" => name}
+  %a{:href => "#"}
+    .sprites-close-black.pull-right
+    - if icon
+      %img.icon{:alt => "icon", :src => icon}/
+    %span.name= name
+    .sprites-tag-arrow

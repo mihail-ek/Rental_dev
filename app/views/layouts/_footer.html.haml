@@ -1,0 +1,43 @@
+%footer
+  .sprites-line
+
+  .container
+    %ul.pull-right.nav.nav-pills.social
+      %li
+        %a{href:"http://www.facebook.com/Makerble", target: "_blank"}
+          .sprites-facebook
+      %li
+        %a{href:"http://twitter.com/makerble", target: "_blank"}
+          .sprites-twitter
+            
+    .sprites-m-logo
+    .sprites-makerble-small-beta-logo.pull-left
+
+    %ul.menu.nav.nav-pills.clearfix.pull-right
+      %li
+        = link_to terms_and_conditions_path do
+          Terms & Conditions 
+      %li
+        = link_to privacy_and_cookies_path do
+          Privacy & Cookies
+      %li
+        = link_to "mailto:contact@makerble.com" do
+          Contact us 
+
+    .copyrights
+      © Makerble 2013
+
+  - if ["home", "charities", "projects"].include?(controller_name)
+    .share-this
+      :javascript
+        var switchTo5x=true;
+      %script{src: "http://w.sharethis.com/button/buttons.js", type: "text/javascript"}
+      %span.st_sharethis_large{displaytext: "ShareThis"}
+      %span.st_facebook_large{displaytext: "Facebook"}
+      %span.st_twitter_large{displaytext: "Tweet"}
+      %span.st_linkedin_large{displaytext: "LinkedIn"}
+      %span.st_pinterest_large{displaytext: "Pinterest"}
+      %span.st_email_large{displaytext: "Email"}
+      %span.st_googleplus_large{displaytext: "Google +"}
+      %span.st_care2_large{displaytext: "Care2"}
+      -# %span.st_google_translate_large{displaytext: "Google Translate"}

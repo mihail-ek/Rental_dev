@@ -1,0 +1,9 @@
+.container
+  .row
+    .span6
+      = render 'shared/sign_up_form', redirect_to_path: new_charity_registration_path
+    .span6
+      .text-center
+        = link_to new_charity_registration_path, class: "btn btn-small btn-inverse" do
+          .sprites-arrow-to-right.pull-right
+          = t('helpers.sign_in')

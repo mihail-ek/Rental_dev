@@ -1,0 +1,26 @@
+%nav
+  .pull-right
+    = link_to causes_preferences_causes_path, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('layouts.header.help_make_change')
+
+  .search-bar
+    .sprites-magnifying-glass
+    = text_field_tag :text, "", placeholder: t('forms.placeholders.search'), id: "search-field"
+
+  .user-box
+    = link_to my_home_path do
+      = image_tag current_user.avatar(:small), width: '40px'
+      .name= truncate(current_user.name, length: 18)
+-#
+-#   .notifications
+-#     .messages
+-#       = link_to my_home_path do
+-#         .sprites-messages
+-#       - if false
+-#         .count 3
+-#     .changes
+-#       = link_to my_home_path do
+-#         .sprites-changes
+-#       - if false
+-#         .count 5

@@ -1,0 +1,74 @@
+.masthead
+  .container
+    .bloc
+      %h1 Everyone can change our world
+      %p
+        Charity used to be about how much money you gave,
+        now it’s more about the change you make.
+
+  = link_to waiting_list_path do
+    .call-to-action.btn.btn-large.btn-inverse
+      .sprites-arrow-to-right.pull-right
+      = t('layouts.header.get_started')
+
+.subscription-service
+  .container
+    .sprites-arrow-to-bottom
+    %h1 The world's first charity projects subscription service
+    %p
+      Add causes and projects you like to your collection and
+      whenever one of your projects gets completed, 
+      we'll replace it with a relevant project approved by you
+    %ul.images.inline
+      %li
+        = image_tag "subscription_service/1.jpg", alt: 'First example of project you can subscribe'
+        = image_tag "subscription_service/2.jpg", alt: 'Second examples of project you can subscribe'
+        = image_tag "subscription_service/3.jpg", alt: 'Third examples of project you can subscribe'
+        = image_tag "subscription_service/4.jpg", alt: 'Fourth examples of project you can subscribe'
+        = image_tag "subscription_service/5.jpg", alt: 'Fifth examples of project you can subscribe'
+
+.spend-and-earn-change
+  .container
+    .pull-right.image
+      = image_tag "common/qualifications-achieved.png"
+
+    %h1
+      Spend change.
+      Earn Change.
+
+    %p
+      For the price of a cappuccino each month you 
+      could rehome orphans, buy school eauipment to
+      aid top grade achievers or re-build a forest 
+      devastated by deforestation.
+
+    %p.infos
+      All projects are sourced from UK charities registered with the Charity Commission
+      and enrolled in our Good Better Best initiative which helps charities
+      continually become more effective.
+
+#how-makerble-works
+  .container
+    %h1 How Makerble works
+    .row
+      .span4
+        .bloc
+          %h2 Help
+          .sprites-about-help
+          %p Select projects, addressing the causes you care about
+      .span4
+        .bloc
+          %h2 Make
+          .sprites-about-make
+          %p Make a donation to buy items associated to your projects
+      .span4
+        .bloc
+          %h2 Change
+          .sprites-about-change
+          %p Know the difference your donation makes
+
+    .call-to-action
+      = link_to waiting_list_path do
+        .call-to-action.btn.btn-large.btn-inverse
+          .sprites-arrow-to-right.pull-right
+          = t('layouts.header.get_started')

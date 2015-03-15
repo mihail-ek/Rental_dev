@@ -1,0 +1,9 @@
+- for join_request in @join_requests
+  .media
+    .img
+      %img{src: "#{join_request.user_avatar_url}", width: "80px"}
+    .bd
+      %div= join_request.user_name
+      %div
+        %a.manage-join-request{"data-request-id" => join_request.id, "data-action" => "approve", href: "#"} Approve
+        %a.manage-join-request{"data-request-id" => join_request.id, "data-action" => "reject", href: "#"} Reject

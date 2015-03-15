@@ -1,0 +1,12 @@
+%nav.getting-started
+  .pull-right
+    = link_to waiting_list_path, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('layouts.header.get_started')
+
+  %ul.inline.pull-right
+    %li
+      = link_to t('layouts.header.how_makerble_works'), "#how-makerble-works"
+    - unless user_signed_in?
+      %li
+        = link_to t('layouts.header.sign_in'), new_user_session_path

@@ -1,0 +1,95 @@
+.row-fluid
+  .pull-right
+    = link_to nil, class: "btn btn-large btn-inverse btn-next disabled" do
+      .sprites-pound.pull-right
+      Complete my order
+
+    - if false
+      = link_to nil, class: "one-off-donation btn btn-large btn-inverse btn-empty btn-next disabled" do
+        .sprites-arrow-to-right-black.pull-right
+        Make one-off donation
+  
+  %h2 What could you give each #{Settings.subscription_interval} to make change?
+
+  - if false
+    .lifestyle-donation
+      %h5
+        Lifestyle donation
+        %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+          .sprites-infos
+      = link_to "#", class: 'switch-button' do
+        %span.text on
+        .sprites-switch-on
+        %span.text off
+
+#choosen-projects-and-bundles.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle.collapsed{"data-parent" => "#choosen-projects-and-bundles", "data-toggle" => "collapse",
+        :href => "#projects-and-bundles-list"}
+        .pull-right
+          - if false
+            %span.what-is-this What is this?
+          .sprites-plus
+        Your Chosen Projects
+    
+    #projects-and-bundles-list.accordion-body.collapse
+      .accordion-inner
+        %table.table.table-hover
+          %thead
+            %tr
+              = render 'basket_th'
+          %tbody.list
+
+#other-projects-you-might-like.accordion{style: 'display: none;'}
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle.collapsed{"data-parent" => "#other-projects-you-might-like", "data-toggle" => "collapse",
+        :href => "#list-of-projects-you-might-like"}
+        .pull-right
+          - if false
+            %span.what-is-this What is this?
+          .sprites-plus
+        Other projects you might like
+    
+    #list-of-projects-you-might-like.accordion-body.collapse
+      .accordion-inner
+        .row-fluid.suggested-projects
+
+        %table.table.table-hover.basket-list
+          %thead
+            %tr
+              = render 'basket_th'
+          %tbody.list
+
+- if false
+  #buy-a-friend-a-gift-voucher.accordion
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle.colapsed{"data-parent" => "#buy-a-friend-a-gift-voucher", "data-toggle" => "collapse",
+          :href => "#list-of-vouchers"}
+          .pull-right
+            - if false
+              %span.what-is-this What is this?
+            .sprites-plus
+          Buy a friend a Gift Voucher
+      
+      #list-of-vouchers.accordion-body.collapse
+        .accordion-inner
+
+          %table.table.table-hover
+            %thead
+              %tr
+                = render 'basket_th'
+
+            %tbody.vouch-row
+
+#checkout-total
+  %ul.unstyled
+    %li.text-right.total-title Your #{Settings.subscription_interval}ly donation
+    %li.text-right.total-price £00.00
+
+.pull-right
+  = link_to nil, class: "btn btn-large btn-inverse btn-next disabled" do
+    .sprites-pound.pull-right
+    Complete my order

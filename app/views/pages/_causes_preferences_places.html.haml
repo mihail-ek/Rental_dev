@@ -1,0 +1,26 @@
+.container#causes-preferences-places
+  .pull-right
+    = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')
+  %h1 Choose your locations (currently only “UK” and “Rest of the world”)
+
+  .bloc.map
+    .selection.pull-right
+      %h4 Selected locations
+      %ul.tags.inline
+    = image_tag "common/map.png", usemap: "#world"
+    %map#world-map{:name => "world"}
+      %area{:coords => "3,2,777,2,781,499,0,499,377,216,365,186,329,204,350,239,1,500", :'data-key' => "rest", :'data-country' => "Rest of the World", :href => "#", :shape => "poly"}/
+      %area{:coords => "332,206,367,188,377,218,350,237", :'data-key' => "uk", :'data-country' => "UK", :href => "#", :shape => "poly"}/
+      / thanks to eleomap! http://dhost.info/eleomap/
+
+  .pull-left
+    = link_to nil, class: "back btn btn-large btn-inverse" do
+      .sprites-arrow-to-left.pull-right
+      Back
+
+  .pull-right
+    = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')

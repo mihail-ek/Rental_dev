@@ -1,0 +1,60 @@
+- columns = 3
+.box{:class => "boxportfolio#{columns}"}
+  .boxcontainer.bloc
+    - if story.media?
+      .image
+        = image_tag story.media(:cover), width: '400px'
+
+    .content{:class => "#{"with-picture" if story.media?}"}
+      .medal
+        = image_tag story.change.icon(:small), width: '79px'
+        .count= story.number
+
+      = image_tag story.project.help_image(:square), width: '60px'
+      %h5= story.title
+      %p= truncate(story.text, length: 255) 
+
+      - if false
+        .pull-right.share
+          .icons
+            = link_to nil do
+              .sprites-facebook-like
+            = link_to nil do
+              .sprites-twitter-share
+
+    - if user_signed_in?
+      %hr
+
+      %ul.actions
+        %li
+          = link_to "#", :class => 'like-an-update', :'data-likable-id' => story.id,
+            :'data-likable-type' => 'Story', :'data-active' => current_user.liked?(story) do
+            .sprites-fav-small
+            %span.text= current_user.liked?(story) ? 'Unfav' : 'Fav'
+            %span.number{ data: { count: story.likes.size } } (#{story.likes.size})
+        %li
+          = link_to "#", :class => 'comment-an-update', :'data-commentable-id' => story.id,
+            :'data-commentable-type' => 'Story' do
+            .sprites-comment-small
+            Comment
+            %span.number{ data: { count: story.comments.count } } (#{story.comments.count})
+        %li
+          -# = link_to "#" do
+          %span
+            .sprites-pound-small
+            Top up
+            - if false
+              %span.number (12)
+
+      .comments
+        %hr
+        .comments-list
+          - story.comments.each do |comment|
+            .comment
+              %span.user= link_to comment.user.name, comment.user
+              = comment.text
+        .submit
+          %textarea{name: "comment", placeholder: "Write a comment...", maxlength: "250"}
+          = link_to "#", class: "btn btn-inverse", :'data-commentable-id' => story.id, :'data-commentable-type' => 'Story' do
+            .sprites-arrow-to-right.pull-right
+            Add comment

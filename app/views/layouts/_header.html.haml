@@ -1,0 +1,29 @@
+%header
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        = link_to root_path, class: 'logo brand' do
+          .sprites-makerble-logo
+
+        - if controller.controller_name == "home" && controller.action_name == "index"
+          - if !user_signed_in? || (user_signed_in? && current_user.charities.none?)
+            .pull-right.actions
+              = render 'layouts/top_navigation_links'
+          - if user_signed_in? && (current_user.charities.any? || current_user.projects_as_colleague.any?)
+            .pull-right.actions
+              = link_to t('layouts.header.charity_dashboard'), charities_dashboard_path, class: 'charity-dashboard'
+          = render 'layouts/navigation_home'
+        - else
+          - if user_signed_in?
+            .pull-right.actions
+              - if @cart # empty on users/invitation page
+                = render 'layouts/shopping_cart_link', item_count: @cart.shopping_cart_items.count
+              = render 'layouts/signed_in_links'
+              - if current_user.charities.any? || current_user.projects_as_colleague.any?
+                = link_to t('layouts.header.charity_dashboard'), charities_dashboard_path, class: 'charity-dashboard'
+            = render 'layouts/navigation'
+          - else
+            .pull-right.actions
+              = render 'layouts/top_navigation_links'
+
+        #flashes= render 'layouts/messages'

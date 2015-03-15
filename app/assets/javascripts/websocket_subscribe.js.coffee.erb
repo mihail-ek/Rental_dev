@@ -1,0 +1,30 @@
+$ ->
+  notifyAboutNewCharityJoinRequest = ->
+    template = _.template($('#flash-template').html())
+    data =
+      message: "<%= I18n.t('layouts.flash_messages.charity_join_request_received') %>"
+      link: "/charities/dashboard/approvals-new-staff"
+      link_text: "<%= I18n.t('layouts.flash_messages.go_to_dashboard') %>"
+    $('#flashes').html(template(data))
+
+  notifyAboutCharityJoinRequestApproved = ->
+    template = _.template($('#flash-template').html())
+    data =
+      message: "<%= I18n.t('layouts.flash_messages.charity_join_request_approved_generic') %>"
+      link: ""
+      link_text: ""
+    $('#flashes').html(template(data))
+
+  subscribeCharityJoinRequestChannel = (dispatcher, charityId) ->
+    private_channel = dispatcher.subscribe_private("charityJoinRequestChannel_#{charityId}")
+    private_channel.bind "new_charity_join_request", notifyAboutNewCharityJoinRequest
+    private_channel.bind "charity_join_request_approved", notifyAboutCharityJoinRequestApproved
+    # private_channel.on_success = (current_user) ->
+    #   console.log current_user.name + " has joined the channel 'charity_#{charityId}'"
+    # private_channel.on_failure = (reason) ->
+    #   console.log("Authorization failed because " + reason.message)
+
+  dispatcher = new WebSocketRails("<%= ENV['HOST_PORT'] %>/websocket")
+
+  charityIdsAsEditor = $('#main-container').data('charityIdsAsEditor').toString().split(",")
+  subscribeCharityJoinRequestChannel(dispatcher, charityId) for charityId in charityIdsAsEditor

@@ -1,0 +1,551 @@
+head a
+  display: none
+
+h2
+  .infos
+    margin-left: 8px
+
+.hint
+  font-style: italic
+  position: relative
+  top: -7px
+  font-size: 12px
+
+.boxcontainer
+  hr
+    margin: 0
+
+  .content
+    text-align: left
+    position: relative
+    border-top: 79px solid #f5f5f5
+    padding: 40px 20px 10px 20px
+
+    &.with-picture
+      border: none
+
+    &.without-change
+      border-top: 0
+      padding-top: 20px
+
+    .medal
+      position: absolute
+      top: -43px
+      left: 142px
+      img
+        margin: 0
+
+    img
+      float: left
+      margin-right: 15px
+      +border-radius(5px)
+    h5
+      text-transform: none
+      margin-top: 6px
+    p
+      line-height: 20px
+      font-size: 12px
+    .share
+      position: relative
+      .icons
+        position: absolute
+        top: -12px
+        right: 5px
+        width: 32px
+
+  .comments
+    display: none
+
+    .comments-list
+      max-height: 150px
+      overflow: hidden
+      margin: 14px
+      .comment
+        margin-bottom: 10px
+        text-align: left
+        .user
+          font-weight: bold
+      .jspVerticalBar
+        width: 10px
+      .jspDrag
+        background: #aaa
+      .jspTrack
+        background: #eee
+    .submit
+      textarea
+        width: 89%
+      .btn
+        padding: 9px
+        font-size: 14Px
+        min-width: 52px
+        margin-bottom: 10px
+
+.boxcontainer, .popover
+  .actions
+    font-family: 'Quicksand', sans-serif
+    font-weight: bold
+    text-transform: uppercase
+    padding: 10px 0
+    margin: 0
+    +font-size(12)
+    .number
+      font-family: 'Piron v2', sans-serif
+      font-weight: normal
+    li
+      display: inline-block
+      width: 32%
+    li:not(:first-child)
+      margin-left: 0
+
+.medal
+  display: inline-block
+  position: relative
+
+  .count
+    position: absolute
+    top: -2px
+    right: -2px
+    padding: 0 9px
+    font-weight: bold
+    +font-size(14)
+    +border-radius(20px)
+    color: white
+    background-color: #333333
+
+.medal-big
+  .count
+    padding: 10px 14px
+    font-size: 20px
+    font-family: "Quicksand", sans-serif
+    top: 8px
+    right: 8px
+    width: 13px
+    color: black
+    background-color: white
+    &.active
+      color: white
+      background-color: #f82914
+
+.span4
+  .actions
+    margin-top: 16px
+    +font-size(15)
+
+// overriding bootstrap
+.popover.right, .popover.left
+  color: #333333
+  margin-top: -15px
+  margin-left: 40px
+  max-width: 375px
+  .arrow
+    top: 60%
+    background: url(/assets/sprites/icons/arrow-to-left-bloc-white.png) no-repeat
+    display: inline-block
+    height: 57px
+    width: 20px
+    left: -45px
+    margin-top: -26px
+    border: none
+    &:after
+      border: none
+
+  .content
+    padding: 10px 8px
+    color: #333 !important
+    +font-size(20)
+    h4
+      margin:
+        bottom: 4px
+        top: 4px
+    h5
+      font-family: "Piron v2", sans-serif
+      margin-bottom: 3px
+    p
+      font-size: 15px
+      margin-top: 18px
+    .actions
+      padding: 10px 0 0
+      li
+        margin: 0 !important
+        [class*="sprites-"]
+          margin-right: 5px
+        span
+          margin-left: 5px
+    a
+      color: #333 !important
+      +font-size(12, "true")
+
+.popover.left
+  margin-left: -135px
+  .arrow
+    background: url(/assets/sprites/icons/arrow-to-right-bloc-white.png) no-repeat
+    left: 352px
+
+.popover-content
+  padding: 0
+
+hr
+  margin: 10px 0
+  border-top: 3px solid black
+  clear: both
+
+.btn-empty
+  background-color: white !important
+  border: solid 2px black !important
+  color: black !important
+
+  [class*="sprites-"]
+    position: relative
+    top: 4px
+
+.btn-inverse
+  border: none
+  background: #222
+  text-align: left
+  padding: 24px
+  min-width: 224px
+  +text-shadow(none)
+  +font-size(24)
+
+  [class*="sprites-"]
+    margin-left: 10px
+
+.btn-inverse.btn-small
+  min-width: 150px
+  padding-top: 8px
+  padding-bottom: 8px
+
+.pagination
+  margin: 0
+  padding: 11px 23px 3px
+  ul
+    width: 100%
+    +box-shadow(none)
+    +font-size(15)
+    li:not(:first-of-type)
+      float: right
+    a
+      border: none !important
+      &:hover
+        background: none !important
+        color: #333 !important
+
+.nav-tabs
+  border: none
+  li
+    margin-right: 20px
+    padding: 10px
+    text-transform: uppercase
+    font-family: "Quicksand", sans-serif
+    font-weight: bold
+    background: white
+    min-width: 240px
+    text-align: center
+    +font-size(22)
+    +box-shadow(#cccccc 0px 0px 10px)
+    .count
+      font-weight: normal
+    a
+      border: none
+    > a:hover, > a:focus
+      border: none
+      background: none
+  .active > a, .active > a:hover, .active > a:focus
+    color: #333
+    border: none
+
+.bloc
+  &.images-only
+    padding: 37px
+    img
+      margin: 5px
+      width: 28%
+      +border-radius(5px)
+
+.footer
+  background: none
+  padding: 0
+
+.tab-content
+  overflow: inherit
+
+li.tag
+  position: relative
+  background: white
+  margin:
+    left: 30px
+    right: 18px
+    bottom: 10px
+  padding: 0 !important
+  line-height: 7px
+  +font-size(15)
+  +border-radius(5px)
+  +box-shadow(#cccccc 0px 0px 10px)
+
+  a
+    display: inline-block
+    padding: 5px 0 0
+    .icon
+      margin: 5px 12px
+    .name
+      position: relative
+      top: 3px
+      margin-right: 25px
+    .sprites-close-black
+      margin: 0
+      position: relative
+      top: 11px
+      left: -2px
+      z-index: 1
+    .sprites-tag-arrow
+      margin: 0
+      position: absolute
+      top: -6px
+      right: -21px
+
+.basket
+  position: relative
+  display: inline-block
+  .count
+    position: absolute
+    font-family: 'Quicksand', sans-serif
+    color: #f82914
+    position: absolute
+    top: -10px
+    left: 9px
+    font-weight: bold
+    +font-size(20)
+
+.button
+  .name
+    margin: 12px
+    position: relative
+    top: -7px
+    font-size: 15px
+
+.switch-button
+  text-transform: uppercase
+  +font-size(20)
+  .text
+    position: relative
+    top: -18px
+  [class*="sprites-"]
+    margin: 0 25px
+
+.projects-to-add
+  h4
+    margin-bottom: 22px
+    +font-size(22)
+  img
+    margin: 0
+  .stats
+    padding: 5px 25px
+    ul
+      font-family: 'Quicksand', sans-serif
+      text-align: center
+      .name
+        font-weight: bold
+        +font-size(15)
+      .count
+        +font-size(14)
+    p
+      +font-size(12)
+      margin: 5px 0
+    .actions
+      text-align: right
+  .buttons
+    text-align: center
+    padding: 10px 0
+    h5
+      text-transform: none
+      margin:
+        top: 0
+        bottom: 15px
+      +font-size(12)
+    border:
+      top: solid 3px #f5f5f5
+      bottom: solid 3px #f5f5f5
+    .go-back, .swap, .select
+      display: inline-block
+      width: 30%
+      .sprites-arrow-go-back
+        margin: 4px 0
+    .select
+      border-left: solid 3px #f5f5f5
+      padding-top: 10px
+    .go-back
+      border-right: solid 3px #f5f5f5
+  .intelligent-match
+    text-align: left
+    margin: 16px 26px
+    padding-bottom: 16px
+    h5
+      text-transform: none
+      margin: 5px 0 0 67px
+      +font-size(16)
+    p
+      margin: 5px 0 0 67px
+      line-height: 21px
+      +font-size(12)
+  .call-to-action
+    padding: 18px 20px
+    margin: 21px
+    width: 279px
+    .name
+      position: relative
+      top: 4px
+
+.accordion
+  margin-bottom: 0
+
+.accordion-group
+  border: none
+  border-top: 3px solid black
+  border-bottom: 3px solid black
+  padding: 5px 0
+  margin-bottom: -3px
+  +border-radius(0)
+  +font-size(22)
+  .accordion-toggle
+    padding: 15px 0
+    font:
+      family: 'Quicksand', sans-serif
+      weight: bold
+    text-transform: uppercase
+    .count
+      font-weight: normal
+    .sprites-plus
+      margin: 1px 0 4px 19px
+    .sprites-minus-sign
+      margin: 10px 5px 10px 22px
+    .what-is-this
+      position: relative
+      top: -8px
+      font-size: 15px
+      margin-right: 10px
+      text-transform: none
+
+.accordion-inner
+  border-top: none
+
+.table th, .table td
+  border-top: none
+
+#help-make-change
+  &.bloc
+    padding: 50px 0
+    .span4
+      width: 349px
+      margin-bottom: 40px
+    .help, .make
+      .image
+        position: relative
+        margin-bottom: 50px
+        h2
+          position: absolute
+          top: 10px
+          text-align: center
+          width: 349px
+          color: white
+          +font-size(30)
+        .avatar
+          position: absolute
+          bottom: -40px
+          width: 349px
+          text-align: center
+          img
+            border: 5px solid white
+            +border-radius(15px)
+      p
+        +font-size(15)
+.change
+  padding-bottom: 104px
+  h2
+    text-align: center
+    margin-top: 18px
+    +font-size(30)
+  .list
+    padding: 0 30px
+    .impact
+      display: inline-block
+      margin: 0 6px
+      text-align: center
+      .name
+        width: 130px
+        margin: auto
+        line-height: 19px
+        margin-top: 10px
+        +font-size(15)
+  .project-progress-stripes
+    top: 5px
+    left: 0
+
+#help-make-change
+  .change .list
+    margin-top: 20px
+
+.wrapper-sprites-line-help-make-change, .wrapper-sprites-line-three-parts
+  width: 100%
+  position: relative
+  top: -5px
+.wrapper-sprites-line-help-make-change
+  overflow: hidden
+.wrapper-sprites-line-three-parts
+  left: -29px
+
+.nav-tabs
+  margin-bottom: 0
+  > li.active
+    > a
+      padding-bottom: 28px
+  li
+    min-width: 170px
+    margin:
+      top: 12px
+      right: 29px
+    padding: 0
+    +font-size(19)
+    a
+      padding:
+        top: 16px
+        bottom: 16px
+    &.active
+      margin-top: 0
+      &.causes, &.places, &.interests
+        .index
+          color: #3595d5
+      &.collect, &.checkout
+        .index
+          color: #36ac9a
+      &.causes, &.places, &.interests
+        .index
+          color: #70c240
+    &:last-of-type
+      margin-right: 0
+
+.tab-pane
+  margin-top: 50px
+
+.lifestyle-donation
+  margin: 0 20px 60px 0
+  h5
+    margin: 0
+    display: inline-block
+    margin-right: 40px
+    +font-size(22)
+    .infos
+      margin-left: 15px
+  .help-block
+    font-size: 12px
+  .switch-button
+    position: relative
+    top: 18px
+    margin-left: 5px
+
+input,
+textarea,
+.uneditable-input
+  width: 400px
+
+.embedded-page
+  margin-top: 30px

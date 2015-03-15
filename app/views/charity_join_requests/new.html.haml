@@ -1,0 +1,10 @@
+.container
+  %p= "Great! Your charity #{@charity_join_request.charity.name} is already registered on Makerble and the account is managed by #{@charity_join_request.charity.leader.name}."
+
+  %p= "Send a Join Request to #{@charity_join_request.charity.leader.name} so that they can add you as a member of staff to your charity’s page."
+
+  = simple_form_for(@charity_join_request) do |f|
+    = f.hidden_field :charity_id
+    = f.input :message, label: t('forms.labels.charity_join_requests.message'), input_html: { autofocus: true }
+    .form-actions
+      = f.button :submit

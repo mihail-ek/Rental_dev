@@ -1,0 +1,6 @@
+%p= "#{@requester.name} has requested to join charity #{@charity.name}"
+
+- if @message.present?
+  %p= @message
+
+%p= link_to 'Go to Charity Admin Dashboard', approvals_new_staff_url

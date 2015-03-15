@@ -1,0 +1,58 @@
+.container
+  - if current_user.has_role? :admin
+    %h4
+      Invite several people into Makerble in one go.
+      They will skip the Waiting List and be allowed direct access into Makerble.
+    = simple_form_for resource, as: resource_name,
+      url: mass_invitation_path(resource_name), html: {method: :post} do |f|
+      = devise_error_messages!
+      .form-field
+        = label :invitation, :emails_list
+        = text_area :invitation, :emails_list, rows: 6
+        .hint (Seperated by comma -- ex: email@gmail.com, john@doe.com)
+      .submit
+        = f.submit "Send the invitations"
+    %hr
+
+    %h4
+      Generate a unique Makerble invitation link for one person.
+      They will skip the Waiting List and be allowed direct access into Makerble.
+      (You can copy this invitation link into an email. When the person clicks the link
+      they will be invited to signup to Makerble with the email address you have used to
+      generate their unique invitation link. Therefore in your email tell them which email
+      address of theirs you have generated this link for)
+    = simple_form_for resource, as: resource_name,
+      url: generate_invitation_link_path(resource_name), html: {method: :post} do |f|
+      = devise_error_messages!
+      .form-field
+        = label :user, :email
+        = text_field :user, :email
+      .submit
+        = f.submit "Generate link"
+    %hr
+
+    %h4 Move people from the Waiting List into Makerble
+    = simple_form_for WaitingList.new, url: grant_access_to_waiting_list_path, html: {method: :post} do |f|
+      .form-field
+        = f.input :email, collection: WaitingList.all, prompt: "Choose an user",
+          label_method: :email, value_method: :id
+      .submit
+        = f.submit "Generate link"
+    %hr
+
+  - if current_user.has_role? :admin
+    %h4
+      Invite one person into Makerble or put them onto the Waiting List.
+      (To put them on the Waiting List, click the Waiting List button)
+  - else
+    %h4
+      Invite one person into Makerble
+  = simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: {method: :post} do |f|
+    = devise_error_messages!
+    - resource.class.invite_key_fields.each do |field|
+      = f.input field
+    - if current_user.has_role? :admin
+      .form-field
+        = check_box :invitation, :waiting_list
+        = label :invitation, :waiting_list
+    = f.submit t("devise.invitations.new.submit_button")

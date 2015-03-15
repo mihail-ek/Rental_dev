@@ -1,0 +1,113 @@
+.cover
+.container
+  .header
+    = image_tag @charity.logo(:profile)
+    - unless @charity.makes.empty?
+      .changes
+        - @charity.makes[0,2].each do |make|
+          = image_tag(make.icon(:normal), width: "176px")
+
+  .score 
+    %hr
+    .pull-right.digits
+      - @charity.change_score.to_s.chars.map(&:to_i).each do |digit|
+        %div{class: "sprites-digit-#{digit}"}
+    %h2 MAKERBLE Change Score
+    %hr
+
+  .row
+    - unless @charity.projects.public.empty?
+      .span8
+        %h2
+          Projects
+          - if false
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+              .sprites-infos
+        .bloc
+          .projects
+            - @charity.projects.public.reverse[0..5].each do |project|
+              .project
+                = link_to project do
+                  = image_tag project.help_image(:square), width: '219px'
+                  .name= project.name
+
+          .clearfix
+          -# = render 'shared/pagination'
+
+    - if false
+      .span4.latest-updates
+        .pull-right.actions
+          = link_to "See all" ,"#"
+        %h2
+          Latest updates
+          %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            .sprites-infos
+        .bloc
+          = link_to "#" do
+            .sprites-arrow-to-left-black-thin
+          %ul
+            = render partial: 'timeline/medal', locals: { name: 'qualifications', title: 'Qualifications', count: 1, popover_placement: 'right' }
+          = link_to "#" do
+            .sprites-arrow-to-right-black-thin
+          
+    - if false
+      .span4.total-makers
+        .pull-right.actions
+          = link_to "See all" ,"#"
+        %h2
+          Total makers
+          %span.count (12)
+          %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+            .sprites-infos
+        .bloc.images-only
+          - 6.times do
+            = link_to "#" do
+              = image_tag "http://placehold.it/79x71"
+
+    - unless @charity.projects_leaders.empty?
+      .span4.project-leaders
+        - if false
+          .pull-right.actions
+            = link_to "See all" ,"#"
+        %h2
+          Project leaders
+          %span.count= "(#{@charity.projects_leaders.count})"
+          - if false
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+              .sprites-infos
+        .bloc.images-only
+          - @charity.projects_leaders.each do |project_leader|
+            = link_to project_leader do
+              = image_tag project_leader.avatar(:square), width: '79px'
+
+  %hr
+
+  .footer.charity-footer-details
+    - if @charity.leader
+      = link_to @charity.leader do
+        = image_tag @charity.leader.avatar(:square), width: '141px'
+    
+    = link_to @charity do
+      = image_tag @charity.logo(:square), width: '141px'
+
+    %ul.unstyled
+      - if @charity.leader
+        %li
+          Project leader:
+          = @charity.leader.name
+      %li
+        Projects completed:
+        = @charity.projects.funded.count
+      %li
+        Location:
+        = @charity.address
+      %li
+        Registered charity number:
+        = @charity.number
+
+    - if false
+      .established-fund-supporters
+        %h5 Established fund supporters
+        - 4.times do  
+          = link_to "#" do
+            = image_tag "http://placehold.it/70x63"

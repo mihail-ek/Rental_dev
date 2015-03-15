@@ -1,0 +1,14 @@
+%div{ class: "control-group #{project.errors.messages[:causes].present? ? 'error' : ''}" }
+  = f.label :causes
+  - causes.each do |cause|
+    - id = "project_cause_ids_#{cause.id}"
+    - is_checked = project.cause_ids.include? cause.id
+    .checkbox
+      %input{id: id, name: "project[cause_ids][]", type: "checkbox", value: cause.id, checked: is_checked}
+      %label{for: id}= cause.name
+
+      .control-group
+        = f.label :sub_causes
+        %input{id: "project_cause_sub_causes_#{cause.id}_sub_cause_list", class: "sub-causes-input", name: "project[cause_sub_causes][#{cause.id}][sub_cause_list]", type: "hidden", data: {subCauses: cause.sub_cause_list}, value: project.sub_cause_list(cause.id)}
+  - if project.errors.messages[:causes].present?
+    = f.error :causes, class: 'help-inline'

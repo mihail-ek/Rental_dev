@@ -1,0 +1,6 @@
+%th
+
+- LifestyleCheckout.order(:price_pennies).first(4).each do |item|
+  %th= item.name
+
+%th

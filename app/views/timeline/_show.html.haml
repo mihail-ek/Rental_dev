@@ -1,0 +1,21 @@
+#change-timeline.masthead
+  .container
+    - if false
+      %a.previous-slide{href: ''}
+        .sprites-arrow-left-slider
+      %a.next-slide{href: ''}
+        .sprites-arrow-right-slider
+
+    .content
+      %h2
+        = @user.name
+        's change Timeline
+        - if false
+          %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+            .sprites-infos
+            
+      %ul.inline.update-timeline
+        - @user.change_stories[0, 5].each do |story|
+          = render partial: 'timeline/medal', locals: { change: story.change,
+            number: story.number, text: story.text, project: story.project,
+            story: story, date: story.created_at}

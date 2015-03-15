@@ -1,0 +1,181 @@
+a.infos
+  color: black
+  &:hover
+    color: black
+
+.pages.checkout
+  .nav.nav-tabs
+    margin:
+      top: 36px
+    li
+      min-width: 31.62%
+      text-align: left
+      font-weight: normal
+      +font-size(22)
+      &.payment
+        min-width: 31.68%
+      a
+        padding: 32px 31px 26px
+      .step
+        font-weight: bold
+        margin-right: 8px
+      &.active
+        a
+          padding-bottom: 38px
+        &.checkout
+          .step
+            color: #3595d5
+        &.payment
+          .step
+            color: #36ac9a
+        &.confirmation
+          .step
+            color: #70c240
+
+  .tab-pane
+    h2
+      max-width: 500px
+      margin-top: 0
+      clear: none
+      text-align: left
+      +font-size(33)
+
+    .pull-right
+      .btn
+        display: block
+        margin-bottom: 20px
+        min-width: 273px
+        +font-size(20)
+
+  table
+    th, td
+      text-align: center
+      width: 15%
+      font-weight: normal
+      +font-size(15)
+
+      &.project-name
+        position: relative
+        text-align: left
+        text-transform: uppercase
+        font-weight: bold
+        line-height: 1.3em
+        +font-size(17)
+        .infos
+          margin-bottom: 12px
+        .name
+          position: absolute
+          bottom: 30px
+          text-align: center
+          color: white
+          text-shadow: 1px 1px #000
+          left: 18px
+          width: 109px
+          +font-size(11)
+
+      .bloc
+        padding: 18px 10px 5px
+        background: #f5f5f5
+        img
+          display: none
+          &.inactive
+            display: inline
+        &.active
+          color: #3595d5
+          background: white
+          img
+            display: inline
+            &.inactive
+              display: none
+        .title
+          +font-size(15)
+
+      input
+        min-height: 115px
+        width: 155px
+        font-size: 63px
+        border: solid 2px black
+        margin-top: 4px
+        text-align: center
+        @include placeholder
+          color: #cbcaca
+          position: relative
+          top: 27px
+          +font-size(19)
+
+    // overridding bootstrap
+    .input-append
+      .add-on:last-child, .btn:last-child, .btn-group:last-child > .dropdown-toggle
+        height: auto
+
+#choosen-projects-and-bundles, #list-of-projects-you-might-like
+  .btn
+    margin: 30px 0 40px
+
+#list-of-projects-you-might-like
+  .name
+    text-align: left
+    margin:
+      top: 15px
+      bottom: 30px
+    +font-size(15)
+
+#list-of-projects-you-might-like
+  .accordion-inner
+    margin-top: 18px
+  .project
+    position: relative
+    &:hover
+      .add
+        display: block
+    .add
+      display: none
+      position: absolute
+      top: 0
+      left: 72px
+      font:
+        family: 'Quicksand', sans-serif
+        weight: bold
+      z-index: 1
+      color: white
+      font-size: 33px
+      text-transform: uppercase
+      .sprites-plus-sign-white
+        position: relative
+        top: 3px
+        left: 3px
+
+#checkout-total
+  margin-top: 36px
+  li
+    margin: 10px 0
+    padding-left: 660px
+    +font-size(17)
+    .price
+      font-weight: bold
+    &.title
+      margin: 20px 0
+      text-transform: uppercase
+      font:
+        weight: bold
+        family: 'Quicksand', sans-serif
+      +font-size(22)
+      &.sub-total
+        border-top: 3px solid black
+        padding-top: 20px
+        border-bottom: 3px solid black
+        padding-bottom: 20px
+        margin-top: 36px
+    &.total-title
+      text-transform: uppercase
+      margin: 34px 0 20px
+      font:
+        weight: bold
+        family: 'Quicksand', sans-serif
+      +font-size(22)
+    &.total-price
+      margin-bottom: 60px
+      font:
+        weight: bold
+        family: 'Quicksand', sans-serif
+      +font-size(35)

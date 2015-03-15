@@ -1,0 +1,7 @@
+// 1170px grid
+// 70*12 + 30*(12-1) = 1170px (12 being the @gridColumns).
+$gridColumnWidth: 70px;
+$gridGutterWidth: 30px;
+
+@import "bootstrap";
+// @import "bootstrap-responsive";

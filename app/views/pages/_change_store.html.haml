@@ -1,0 +1,42 @@
+.container#change-store
+  .header-container
+    %ul.actions.inline.pull-right
+      %li
+        = link_to "#", class: 'button' do
+          %span.name Buy Vouchers
+          .sprites-voucher
+      %li      
+        = link_to "#", class: 'button' do
+          %span.name Your basket
+          .basket
+            .sprites-basket
+            .count 3
+
+    %h1 Change Store
+    %p
+      Lorem ipsum dolor sit amet sonsectutor Lorem ipsum dolor sit amet sonsectutor
+      Lorem ipsum dolor sit amet sonsectutor Lorem ipsum dolor sit 
+
+  .row.nav-big
+    %a(href="#bundles" data-toggle="tab")
+      .bloc.span4
+        .sprites-bundles
+        %h4 Bundles
+    %a(href="#projects" data-toggle="tab")
+      .bloc.span4
+        .sprites-projects-inactive
+        %h4 Projects
+    %a(href="#stories" data-toggle="tab")
+      .bloc.span4
+        .sprites-stories-inactive
+        %h4 Stories
+
+  %hr
+
+  .tab-content
+    #bundles.tab-pane.fade
+      = render 'bundles_tab_pane'
+    #projects.tab-pane.fade.active.in
+      = render 'projects_tab_pane'
+    #stories.tab-pane.fade
+      = render 'stories_tab_pane'

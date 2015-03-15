@@ -1,0 +1,18 @@
+%h2= t('users.registrations.new.title')
+= link_to omniauth_authorize_path('user', :facebook) do
+  .fb-login-button
+    .sprites-facebook
+    = t('users.registrations.new.facebook')
+%hr
+%h5= t('users.registrations.new.email_alternative')
+= simple_form_for resource, as: resource_name, url: registration_path(resource_name), multipart: true do |f|
+  = devise_error_messages!
+
+  %input{name: "redirect_to_path", type: "hidden", value: redirect_to_path}
+  = f.input :first_name, autofocus: true
+  = f.input :last_name
+  = f.input :email
+  = f.input :avatar, label: t('forms.labels.sign_up.avatar')
+  = f.input :password
+  = f.input :password_confirmation
+  = f.submit t('forms.actions.sign_up.submit')

@@ -1,0 +1,46 @@
+%h2
+  = link_to project do
+    = "#{project.name} (#{project.present_status})"
+%ul.inline
+  - if project.approved
+    %li= link_to "View public page", project, class: 'btn'
+  - if can? :update, project
+    %li= link_to "Edit project", edit_charity_project_path(project.charity, project), class: 'btn'
+  - if can? :destroy, project
+    %li= link_to "Delete project", project, method: :delete,
+      confirm: "Are you sure that you want to delete this project?", class: 'btn'
+  -# - if can? :update, project
+  -#   - special_welcome_message_path = project.welcome_message ? edit_project_welcome_message_path(project, project.welcome_message) : new_project_welcome_message_path(project)
+  -#   %li= link_to "View / Edit welcome message", special_welcome_message_path, class: 'btn'
+
+%dl.dl-horizontal
+  %dt Help thumbnail
+  %dd= image_tag project.help_image(:small), width: "100px"
+  %dt Make thumbnail
+  %dd= image_tag project.make_image(:small), width: "100px"
+
+  %dt Funding progress
+  %dd= project.change_score
+
+  %dt Number of makers
+  %dd= project.makers.count
+
+%h2
+  Updates
+  (#{project.stories.count})
+
+%ul.unstyled
+  - project.stories.each do |story|
+    %li
+      = truncate story.text
+      = ": #{story.number} #{story.change.name}"
+      = "(not approved yet)" if can?(:update, story) && !story.approved
+      - if can? :update, story
+        = link_to "Edit", edit_project_story_path(story.project, story)
+      - if can? :destroy, story
+        = link_to "Delete", project_story_path(story.project, story), method: :delete
+
+%ul.inline
+  %li= link_to "Write update", new_project_story_path(project), class: 'btn'
+  - if can? :trends, project
+    %li= link_to "View project trends", charity_project_trends_path(project.charity, project), class: 'btn'

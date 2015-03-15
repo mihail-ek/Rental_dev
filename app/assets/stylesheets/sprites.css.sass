@@ -1,0 +1,112 @@
+$sprites-sprite-dimensions : true
+$sprites-line-repeat       : repeat-x
+
+@import "sprites/**/*.png"
+@include all-sprites-sprites
+$sprites: sprite-map("sprites/**/*.png")
+
+[class*="sprites-"]
+  display: inline-block
+
+.sprites-line
+  display: inherit
+  width: auto
+  background-repeat: repeat-x
+
+.sprites-line-help-make-change
+  background-repeat: repeat-x
+  background-position: sprite-position($sprites, "line-help-make-change", -150px, 0)
+
+.sprites-infos, .sprites-thump-up
+  background-color: #000
+  +border-radius(62px)
+  position: relative
+  top: 5px
+
+.sprites-play-button
+  background-color: #333333
+  +border-radius(60px)
+  position: relative
+  top: 5px
+
+.sprites-add-people, .sprites-add-money
+  margin-left: 3px
+  background-color: #333333
+  +border-radius(5px)
+
+.project-progress-stripes
+  display: inline-block
+  position: relative
+  left: 8px
+  top: -38px
+
+  [class*="sprites-progress-stripe"]
+    &:nth-child(2)
+      left: 30px
+    &:nth-child(3)
+      left: 60px
+    &:nth-child(4)
+      left: 90px
+    &:nth-child(5)
+      left: 120px
+    &:nth-child(6)
+      left: 150px
+    &:nth-child(7)
+      left: 180px
+    &:nth-child(8)
+      left: 210px
+    &:nth-child(9)
+      left: 240px
+    &:nth-child(10)
+      left: 270px
+
+  [class*="sprites-progress-stripe"]
+    position: absolute
+
+.project-progress-stripes-small-background
+  background-color: #f5f5f5
+  padding-left: 25px
+.project-progress-stripes-small
+  display: inline-block
+  position: relative
+  height: 38px
+  padding: 10px 0 0
+  width: 100%
+
+  [class*="sprites-progress-stripe"]
+    &:nth-child(2)
+      left: 13px
+    &:nth-child(3)
+      left: 26px
+    &:nth-child(4)
+      left: 39px
+    &:nth-child(5)
+      left: 52px
+    &:nth-child(6)
+      left: 65px
+    &:nth-child(7)
+      left: 78px
+    &:nth-child(8)
+      left: 91px
+    &:nth-child(9)
+      left: 104px
+    &:nth-child(10)
+      left: 117px
+
+  [class*="sprites-progress-stripe"]
+    position: absolute
+
+.sprites-fav-small
+  position: relative
+  top: -1px
+  left: -1px
+
+.sprites-comment-small
+  position: relative
+  top: 2px
+  left: -1px
+
+.sprites-pound-small
+  position: relative
+  top: 1px
+  left: -1px

@@ -1,0 +1,23 @@
+.container
+  %h1= "Trends for the project: #{@project.name}"
+  
+  %dl
+    %dt Number of top-ups
+    %dd= @project.top_ups.count
+    
+    %dt Number of makers
+    %dd= @project.makers.count
+    
+    %dt Total donated
+    %dd 0 
+    
+    %dt Days remaining
+    %dd= @project.days_remaining
+    
+    %dt Numbers of makers recruited through updates
+    %dd= @project.makers_recruited_through_updates.count
+    
+    %dt Number of makers recruited by friends
+    %dd= @project.makers_recruited_by_friends.count
+
+  = link_to "Go back to the charity dashboard", charities_dashboard_path(@project.charity), class: "btn"

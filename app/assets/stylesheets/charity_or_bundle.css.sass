@@ -1,0 +1,115 @@
+.charity-or-bundle
+  .header-container
+    margin:
+      top: 70px
+      bottom: 50px
+    p
+      +font-size(15)
+
+    .text
+      text-align: center
+      padding: 0 190px
+
+    .connect
+      text-align: center
+      .message, .follow
+        float: left
+        .name
+          margin-top: -2px
+      .follow
+        margin-left: 30px
+
+  .tab-pane
+    h2
+      clear: none
+      text-align: left
+
+    .score
+      margin-bottom: 25px
+      h2
+        margin: 35px 0
+      .digits
+        +scale(.9)
+        margin-top: 8px
+        margin-right: -5px
+
+    .projects
+      padding: 23px 23px 23px 25px
+      
+      .project
+        width: 33.3%
+        margin-bottom: 25px
+        &:nth-child(2n+1)
+          img, .name
+            margin-left: 0
+        &:nth-child(2n)
+          img, .name
+            margin-right: 0
+
+.tab-content
+  margin-top: -49px
+  .cover
+    height: 309px
+    background: #DDD image-url("common/masthead_background_girls_tree.jpg") no-repeat center 0px
+  
+  .header
+    margin-top: -95px
+    margin-bottom: 35px
+    > img
+      background: white
+      padding: 8px
+      +box-shadow(#ccc 0px 0px 10px)
+    .changes
+      display: inline-block
+      margin-left: 15px
+      img
+        margin-left: 20px
+
+.latest-updates
+  .bloc
+    position: relative
+  .sprites-arrow-to-left-black-thin, .sprites-arrow-to-right-black-thin
+    position: absolute
+    top: 45%
+    margin-top: -20px
+  .sprites-arrow-to-left-black-thin
+    left: 30px
+  .sprites-arrow-to-right-black-thin
+    right: 30px
+  ul
+    text-align: center
+    padding: 38px 62px 30px
+    margin: 0
+    list-style: none
+  p
+    font-size: 16px
+    font-weight: normal
+    text-align: center
+    margin: 25px 0 0
+    text-transform: none
+
+.charity-footer-details
+  margin-top: 45px
+  position: relative
+  > a img
+    margin-right: 40px
+  img
+    +border-radius(5px)
+  ul
+    display: inline-block
+    position: absolute
+    bottom: -13px
+    margin-left: 10px
+  ul, h5
+    font-size: 15px
+    text-transform: none
+    font-weight: normal
+  .established-fund-supporters
+    position: absolute
+    bottom: 0
+    right: 0
+    img, h5
+      margin-left: 20px
+    h5
+      margin-bottom: 20px
+      font-family: 'Piron v2', sans-serif

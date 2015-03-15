@@ -1,0 +1,26 @@
+defaults: &defaults
+  subscription_interval: 'month'
+
+development:
+  <<: *defaults
+  host: localhost:3000
+  go_cardless:
+    sandbox: true
+    app_id: CM20T8X6ZZN459CXXQDRQ6FKE0M7YRZJBTA47EYH3H7CG4DYRV6MFN7AWYNQAVVD
+    app_secret: QWRKD8CRC02CBS21GF36C141GZZNQJJCD4RMKV4YGSNNBJXJECMWYDN65HQJETW8
+
+staging:
+  <<: *defaults
+  host: staging.makerble.com 
+  go_cardless:
+    sandbox: true
+    app_id: CM20T8X6ZZN459CXXQDRQ6FKE0M7YRZJBTA47EYH3H7CG4DYRV6MFN7AWYNQAVVD
+    app_secret: QWRKD8CRC02CBS21GF36C141GZZNQJJCD4RMKV4YGSNNBJXJECMWYDN65HQJETW8  
+  
+production:
+  <<: *defaults
+  host: www.makerble.com
+  go_cardless:
+    sandbox: false
+    app_id: V6X4B4H8M288WNV75BT89NQZBF4MF14ER7N0D9WAJXN0BQSF0ZMC0AGG90W15D03
+    app_secret: NHS5HXHRFEFVRD03YJHWP7GTJQX2Z4J5HNSQ7VGA6JQ89T0039XTWWQ48GKRNK85

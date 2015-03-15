@@ -1,0 +1,29 @@
+%ul.filters.pull-right
+  %li.active.dropdown
+    %a.bloc.dropdown-toggle.js-activated{:href => "#", :'data-toggle' => "dropdown"}
+      %span.name Sort by
+      .sprites-arrow-to-bottom-black-thin
+
+    %ul.bloc.dropdown-menu
+      %li.active
+        %a{:href => ""} Relevance
+      %li
+        %a{:href => ""} Date
+
+%h1 Bundle / Theme / Change Story name
+
+.lifestyle-donation
+  %h5
+    Lifestyle donation
+    %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+      .sprites-infos
+  = link_to "#", class: 'switch-button' do
+    %span.text on
+    .sprites-switch-on
+    %span.text off
+    
+.header-tab
+- if params[:action] == "change_store_projects"
+  = render "projects_tab_pane_categories"
+- elsif params[:action] == "change_store_projects_category"
+  = render "projects_tab_pane_category"

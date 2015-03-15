@@ -1,0 +1,107 @@
+= render 'timeline/show'
+
+.container
+  .row
+    .span12
+      .row
+        .span8.project-progress
+          - if user_signed_in? && @user == current_user && @welcome_messages.any?
+            %h2
+              Welcome messages
+
+            .bloc.welcome-messages
+              - @welcome_messages.each do |message|
+                .row
+                  %h4
+                    = link_to message.project do
+                      Project: #{message.project.name}
+                  %h5= message.headline
+                  %p= message.text
+                %hr
+
+          %h2
+            Project progress
+            - if false
+              %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                .sprites-infos
+
+          - if @user.helped_projects.any?
+            .bloc
+              - @user.helped_projects[0, 4].reverse.each do |project| # TODO Display more projects
+                .row
+                  .project-progress-overview
+                    - if false
+                      .pull-right
+                        %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                          .sprites-add-people
+                        %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                          .sprites-add-money
+                    %h4= link_to truncate(project.name, length: 80), project
+                  .span.helping
+                    %h5 Helping
+                    = link_to image_tag(project.help_image(:square), width: '134px'), project
+                  .span.making
+                    %h5
+                      Making
+                      - if project.current_project_make
+                        (#{humanized_money_with_symbol(project.current_project_make.donations_total)}
+                        of #{humanized_money_with_symbol(project.current_project_make.cost)})
+                      - elsif project.previous_project_make
+                        (#{humanized_money_with_symbol(project.previous_project_make.donations_total)}
+                        of #{humanized_money_with_symbol(project.previous_project_make.cost)})
+                    .details
+                      - if project.current_project_make
+                        = image_tag project.current_project_make.make.icon(:square)
+                        - progress = project.current_project_make.progress
+                      - elsif project.previous_project_make
+                        = image_tag project.previous_project_make.make.icon(:square)
+                        - progress = project.previous_project_make.progress
+                      - else
+                        = image_tag "sprites/icons/seeds.png"
+                        - progress = 0
+                      .project-progress-stripes
+                        - progress = 15 if progress < 15
+                        - (progress / 10).times do |index|
+                          %div{:class => "sprites-progress-stripe-#{index}"}
+                        - (10 - progress / 10).times do |index|
+                          %div{:class => "sprites-progress-stripe-empty"}
+
+                  .span.change
+                    %h5 Change
+                    .medal
+                      - if project.current_project_change
+                        = image_tag project.current_project_change.change.icon(:small), width: '79px'
+                        .count= project.current_project_change.changes_total
+                      - elsif project.previous_project_change
+                        = image_tag project.previous_project_change.change.icon(:small), width: '79px'
+                        .count= project.previous_project_change.changes_total
+                    - if false
+                      .action
+                        = link_to "View Total", "#"
+
+                %hr
+
+              /= render 'pagination'
+
+          - else
+            Nothing to show here.
+
+        .span4.achievements
+          - if @user == current_user
+            .pull-right.actions
+              = link_to "Account settings" , edit_user_path(@user)
+          %h2
+            Achievements
+            - if false
+              %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                .sprites-infos
+
+          = render 'users/change_column'
+
+  #followings
+    %h2
+      Tiles
+      - if false
+        %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "#", :title => ""}
+          .sprites-infos
+    = render "projects/change_update", columns: 3

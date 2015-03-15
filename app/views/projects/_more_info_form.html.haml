@@ -1,0 +1,38 @@
+.container
+  = simple_form_for([charity, project]) do |f|
+    .form-errors.moreinfo-form
+    .form-inputs
+      = f.input :headline
+
+      = f.input :location
+
+      %h5= t('forms.labels.projects.welcome_messages')
+      #welcome_messages
+        = f.simple_fields_for :welcome_messages do |w|
+          = render 'projects/welcome_message_fields', f: w
+
+      %h5= t('forms.labels.projects.team_members')
+      - if can? :manage_colleagues, project
+        = f.label :editors
+        = f.association :editors, as: :hidden
+
+        = f.label :reporters
+        = f.association :reporters, as: :hidden
+
+        = link_to t('forms.actions.projects.invite_member'), new_user_invitation_path, class: 'hint', target: '_blank'
+
+      %h5= t('forms.labels.projects.faqs')
+      #faqs
+        = f.simple_fields_for :faqs do |faq|
+          = render 'projects/faq_fields', f: faq
+        .links
+          = link_to_add_association t('forms.actions.faqs.add_item'), f, :faqs
+
+    .form-actions
+      = link_to '#', class: 'btn btn-small btn-inverse prev-section change' do
+        .sprites-arrow-to-left.pull-left
+        = t('helpers.back')
+      = f.button :submit, t('helpers.submit.submit', model: 'Project'), class: 'btn btn-small btn-inverse save-project'
+      = link_to '#', class: 'btn btn-small btn-inverse next-section submit-project' do
+        .sprites-arrow-to-right.pull-right
+        = t('helpers.next')

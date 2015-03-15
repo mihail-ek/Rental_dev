@@ -1,0 +1,6 @@
+.nested-fields
+  = f.input :headline, required: false
+  - src = (f.object.image? && f.object.image.url) || ""
+  - title = f.object.image_file_name || ""
+  = f.input :image, input_html: { class: 'image-with-preview', data: {src: src, title: title } }, required: false
+  = f.input :text, hint: t('forms.hints.welcome_messages.text'), required: false

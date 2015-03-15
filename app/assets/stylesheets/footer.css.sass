@@ -1,0 +1,65 @@
+footer
+  clear: both
+  margin:
+    top: 60px
+    bottom: 25px
+
+  .container
+    position: relative
+    margin-top: 30px
+
+    .sprites-makerble-small-logo
+      margin-top: 10px
+
+    .sprites-m-logo
+      position: absolute
+      left: 50%
+      margin-left: -5px
+      top: -60px
+
+  ul.social
+    list-style: none
+    margin: 0
+
+    &.nav
+      a
+        margin: 0 0 0 12px
+        padding: 0
+        &:hover, &:focus
+          background: none
+
+    .sprites-facebook
+      position: relative
+      left: 20px
+    .sprites-twitter
+      position: relative
+      z-index: 1
+
+  .copyrights
+    float: left
+    font-size: 11px
+    margin-top: 25px
+    color: #bbb
+
+  .menu
+    margin-top: 30px
+    margin-bottom: 0
+    li
+      &:not(:first-child)
+        border-left: 1px solid #bbb
+
+    a
+      color: #bbb
+      font-size: 11px
+      margin: 0
+      padding: 0 5px
+      +border-radius(0)
+
+      &:hover, &:focus
+        background: none
+
+  .share-this
+    position: fixed
+    right: -48px
+    bottom: -9px
+    +scale(0.7)

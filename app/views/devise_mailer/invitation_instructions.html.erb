@@ -1,0 +1,16 @@
+<p>I've started using a new app called Makerble that lets you take control
+of your charitable giving and visualise the direct impact you can make
+in the world. You choose the causes you
+care about and Makerble finds relevant projects tailored to your interests.
+Once those projects start making change in the world, you get notified
+via a personalised email newsletter or through the Makerble Mobile App which comes out early next year.</p> 
+
+<p>There's a growing number of charities using Makerble and 
+while in it's in its pilot stage, invitations are scarce but 
+I have two and am giving one of them to you!</p>
+
+<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @token) %></p>
+
+<p>See you on Makerble!</p>
+
+<p><%= @resource.invited_by.name %></p>

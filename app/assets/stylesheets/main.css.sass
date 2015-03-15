@@ -1,0 +1,25 @@
+body
+  background-color: #f5f5f5
+
+hr
+  margin: 0
+  border-top: 3px solid #f5f5f5
+
+.bloc
+  +box-shadow(#ccc 0px 0px 10px)
+  background-color: white
+  margin: 4px 4px 20px 4px // because of overflow: hidden when using isotope
+  &, &:hover
+    border-bottom: none // override bootstrap theme of the boxcontainer class
+  .row
+    padding: 15px 35px 30px
+  hr
+    border-top: 3px solid #f5f5f5
+
+// overriding isotope
+.boxportfolio3
+  margin-bottom: 0
+
+.main-container
+  > .container
+    margin-top: 40px

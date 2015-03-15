@@ -1,0 +1,76 @@
+App.Views ||= {}
+
+class App.Views.SaveProjectView extends Backbone.View
+  el: "#save-project"
+  events:
+    "click .nav li": 'navClicked'
+    "click .next-section": 'nextSectionClicked'
+    "click .prev-section": 'previousSectionClicked'
+
+  navClicked: (event) ->
+    $target = $(event.currentTarget)
+    @triggerSubmit $('.tab-pane.active')
+    if !$target.hasClass('active')
+      $("html, body").animate({ scrollTop: 0 })
+
+  nextSectionClicked: (event) ->
+    event.preventDefault()
+    $link = $(event.target)
+    classes = $link.attr('class')
+    if /make/.test classes
+      $('.nav .make a').trigger 'click'
+    else if /change/.test classes
+      $('.nav .change a').trigger 'click'
+    else if /more-info/.test classes
+      $('.nav .more-info a').trigger 'click'
+    else if /submit-project/.test classes
+      $('.nav .submit-project a').trigger 'click'
+
+  previousSectionClicked: (event) ->
+    event.preventDefault()
+    $link = $(event.target)
+    classes = $link.attr('class')
+    if /help/.test classes
+      $('.nav .help a').trigger 'click'
+    else if /make/.test classes
+      $('.nav .make a').trigger 'click'
+    else if /change/.test classes
+      $('.nav .change a').trigger 'click'
+    else if /more-info/.test classes
+      $('.nav .more-info a').trigger 'click'
+
+  triggerSubmit: ($tabPane) ->
+    $tabPane.find('.save-project').trigger 'click'
+
+_.extend Backbone.View::,
+  alertErrors: (errors) ->
+    template = _.template($('#alert-error').html())
+    _.each errors, (value, key, list) ->
+      $(".form-errors.#{key}-form").html(template({ errors: value }))
+
+  clearErrors: ($currentForm) ->
+    $currentForm.find('.form-errors').empty()
+    $('#submit-project .form-errors').empty()
+
+  notifyUser: (message)->
+    template = _.template($('#flash-template').html())
+    data =
+      message: message
+      link: ""
+      link_text: ""
+    $('#flashes').html(template(data))
+
+  submitProjectForApproval: (e, type) ->
+    e.preventDefault()
+    $form = $(e.currentTarget)
+    $.ajax
+      type: type
+      url: $form.attr 'action'
+      data:
+        project:
+          draft: false
+      dataType: 'JSON'
+      success: (project) =>
+        @notifyUser "<%= I18n.t('layouts.flash_messages.project_submitted') %>"
+      error: (xhr) =>
+        @alertErrors JSON.parse(xhr.responseText).errors

@@ -1,0 +1,42 @@
+.causes-preferences
+  .container
+    %ul.nav.nav-tabs
+      %li.causes{:class => "#{"active" if params[:action] == "causes_preferences_causes"}"}
+        %a(href="#causes" data-toggle="tab")
+          %span.index 1
+          %span.name - Problems
+      %li.places{:class => "#{"active" if params[:action] == "causes_preferences_places"}"}
+        %a(href="#places" data-toggle="tab")
+          %span.index 2
+          %span.name - Places
+      %li.interests{:class => "#{"active" if params[:action] == "causes_preferences_interests"}"}
+        %a(href="#interests" data-toggle="tab")
+          %span.index 3
+          %span.name - Passions
+
+      %li.collect{:class => "#{"active" if params[:action] == "collect"}"}
+        %a(href="#collect" data-toggle="tab")
+          %span.index 4
+          %span.name - Collect
+      %li.checkout{:class => "#{"active" if params[:action] == "causes_preferences_checkout"}"}
+        = link_to "#" do
+          %span.index 5
+          %span.name - Checkout
+
+      %li.my-home{:class => "#{"active" if params[:action] == "causes_preferences_my_home"}"}
+        %a(href="#")
+          %span.index 6
+          %span.name - My home
+
+    .wrapper-sprites-line-help-make-change
+      .sprites-line-help-make-change
+
+  .tab-content
+    #causes.tab-pane.fade{:class => "#{"active in" if params[:action] == "causes_preferences_causes"}"}
+      = render 'causes_preferences_causes'
+    #places.tab-pane.fade{:class => "#{"active in" if params[:action] == "causes_preferences_places"}"}
+      = render 'causes_preferences_places'
+    #interests.tab-pane.fade{:class => "#{"active in" if params[:action] == "causes_preferences_interests"}"}
+      = render 'causes_preferences_interests'
+    #collect.tab-pane.fade{:class => "#{"active in" if params[:action] == "collect"}"}
+      = render 'collect'

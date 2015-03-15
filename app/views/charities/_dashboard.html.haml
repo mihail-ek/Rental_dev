@@ -1,0 +1,24 @@
+#charities-dashboard.charities-dashboard
+  .container
+    %ul.nav.nav-tabs.dashboard-tabs
+      %li{class: "#{"active" if params[:action] == "current_status"}", data: {name: "current-status"} }
+        %a(href="#current-status" data-toggle="tab") Current Status Dashboard
+      %li.dropdown{ class: "#{"active" if params[:action].start_with?("approvals")}" }
+        %a#approvals-drop.dropdown-toggle(href="#" data-toggle="dropdown")
+          Approvals
+          %b.caret
+        %ul.dropdown-menu(role="menu" aria-labelledby="approvals-drop")
+          %li{class: "#{"active" if params[:action] == "approvals_new_staff"}", data: {name: "approvals-new-staff"} }
+            %a(href="#approvals-new-staff" tabindex="-1" data-toggle="tab") New Staff
+          -# %li data-menu="approvals-new-projects"
+          -#   %a(href="#approvals-new-projects" tabindex="-1" data-toggle="tab") New Projects
+
+    .wrapper-sprites-line-help-make-change.sprites-line
+
+  .tab-content
+    #current-status.tab-pane.fade{:class => "#{"active in" if params[:action] == "current_status"}"}
+      = render 'current_status'
+    #approvals-new-staff.tab-pane.fade{:class => "#{"active in" if params[:action] == "approvals_new_staff"}"}
+      = render 'approvals_new_staff'
+    -# #approvals-new-projects.tab-pane.fade
+    -#   = render 'approvals_new_projects'

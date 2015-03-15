@@ -1,0 +1,18 @@
+%ul.unstyled
+  - faqs.each do |faq|
+    - if faq.answer || (user_signed_in? && faq.question && faq.question.user == current_user)
+      %li.faq-item{data: { faq_id: faq.id }}
+        %a{"data-target" => "#question-#{faq.question.id}", "data-toggle" => "collapse", type: "button", href: ""}
+          = faq.question.text
+          - unless faq.answer
+            %span.infos (Click here to answer)
+          - if can? :destroy, faq
+            %span.delete (delete)
+        - if faq.answer
+          .answer.collapse{id: "question-#{faq.question.id}"}= faq.answer.text
+        - else
+          .answer.collapse{id: "question-#{faq.question.id}"}
+            %textarea{cols: "40", class: "answer_content", name: "answer[content]", rows: "5", maxlength: "254"}
+            = link_to nil, class: 'submit btn btn-inverse', data: { question_id: faq.question.id } do
+              .sprites-arrow-to-right.pull-right
+              Answer

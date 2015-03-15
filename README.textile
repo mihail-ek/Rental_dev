@@ -1,0 +1,28 @@
+h1. Makerble
+
+https://www.makerble.com
+
+h2. Ruby on Rails
+
+This application requires:
+
+* Ruby version 2.0.0
+* Rails version 3.2.15
+
+Learn more about "Installing Rails":http://railsapps.github.com/installing-rails.html.
+
+h2. Database
+
+This application uses PostgreSQL with ActiveRecord.
+
+h2. Development
+
+* Template Engine: Haml
+* Testing Framework: RSpec and Factory Girl and Cucumber
+* Front-end Framework: Twitter Bootstrap (Sass)
+* Form Builder: SimpleForm
+* Authentication: Devise
+* Authorization: CanCan
+* Webhooks: ultrahook -k ImfhEwZm4LoZ3kIztp9qSiQuCpwbCIvm stripe http://localhost:3000
+* Mails: mailcatcher
+* Backgrounds jobs: rake jobs:work

@@ -1,0 +1,26 @@
+.container
+  %h1 Listing charities
+
+  %table
+    %tr
+      %th Name
+      %th Description
+      %th Address
+      %th Number
+      %th
+      %th
+      %th
+
+    - @charities.each do |charity|
+      %tr
+        %td= charity.name
+        %td= charity.description
+        %td= charity.address
+        %td= charity.number
+        %td= link_to 'Show', charity
+        %td= link_to 'Edit', edit_charity_path(charity)
+        %td= link_to 'Destroy', charity, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Charity', new_charity_path

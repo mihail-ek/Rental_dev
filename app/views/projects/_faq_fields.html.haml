@@ -1,0 +1,4 @@
+.nested-fields
+  = f.input :question, input_html: { value: f.object.question.try(:text) || ''}
+  = f.input :answer, as: :text, input_html: { rows: 5, value: f.object.answer.try(:text) || ''}
+  = link_to_remove_association t('forms.actions.faqs.remove_item'), f

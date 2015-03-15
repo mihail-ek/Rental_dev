@@ -1,0 +1,7 @@
+%p= "Hello #{@requester.name},"
+
+%p= "your project has been submitted and is now pending approval."
+
+%p= "Here's the data you've provided:"
+
+= render 'projects/project_preview', project: @project

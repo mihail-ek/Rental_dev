@@ -1,0 +1,9 @@
+<div class="span3 text-center suggested-project" data-project-id="#{@project.id}">
+  <a href="#" class="project"><div class="add">
+  Add
+  <div class="sprites-plus-sign-white"></div>
+  </div>
+  <img alt="160" src="#{@project.image_for_you_might_like_url}">
+  <div class="name">#{@project.name}</div>
+  </a>
+</div>

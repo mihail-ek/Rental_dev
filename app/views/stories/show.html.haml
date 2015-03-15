@@ -1,0 +1,14 @@
+.container
+  %p#notice= notice
+
+  %p
+    %b Text:
+    = @story.text
+  %p
+    %b Change:
+    = @story.change
+  %p
+    %b Number:
+    = @story.number
+
+  = link_to 'Edit', edit_story_path(@story)

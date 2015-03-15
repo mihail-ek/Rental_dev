@@ -1,0 +1,33 @@
+.container
+  = simple_form_for([charity, project]) do |f|
+    .form-errors.change-form
+    .form-inputs
+      = f.input :change_statement, as: :text, input_html: { rows: 5 }
+
+      #changes
+        %h5= t('forms.labels.projects.change_outputs')
+        %ul
+        = f.simple_fields_for :projects_changes do |change_form|
+          %li
+            = render 'projects_change_fields', f: change_form
+          %hr
+        .links
+          = link_to_add_association t('forms.actions.projects_changes.add_item'), f, :projects_changes, class: 'btn'
+        %hr
+
+      = f.label :change_tags, t('forms.labels.projects.change_tags')
+      = f.input :change_tag_list, as: :hidden
+
+      = f.input :past_experience, as: :text, input_html: { rows: 10 }, label: t('forms.labels.projects.past_experience')
+      - src = (!project.past_experience_photos.empty? && project.past_experience_photos.first.photo.url) || ""
+      - title = (!project.past_experience_photos.empty? && project.past_experience_photos.first.photo_file_name) || ""
+      = f.input :past_experience_photos, as: :file, input_html: { class: 'image-with-preview', data: {src: src, title: title }, multiple: 'multiple' }
+
+    .form-actions
+      = link_to '#', class: 'btn btn-small btn-inverse prev-section make' do
+        .sprites-arrow-to-left.pull-left
+        = t('helpers.back')
+      = f.button :submit, t('helpers.submit.submit', model: 'Project'), class: 'btn btn-small btn-inverse save-project'
+      = link_to '#', class: 'btn btn-small btn-inverse next-section more-info' do
+        .sprites-arrow-to-right.pull-right
+        = t('helpers.next')

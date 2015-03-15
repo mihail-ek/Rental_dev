@@ -1,0 +1,38 @@
+App.Views ||= {}
+
+class App.Views.NewProjectView extends Backbone.View
+  el: "#save-project"
+  events:
+    "submit #help-form form": "saveProject"
+    "submit #make-form form": "saveProject"
+    "submit #change-form form": "saveProject"
+    "submit #more-info-form form": "saveProject"
+    "submit #submit-project form": "submitProjectForApprovalOnCreate"
+
+  saveProject: (e) ->
+    e.preventDefault()
+    $form = $(e.currentTarget)
+    formData = new FormData $form[0]
+    action = $form.attr 'action'
+    $.ajax
+      type: "POST"
+      url: action
+      data: formData
+      dataType: 'JSON'
+      contentType: false
+      processData: false
+      success: (project) =>
+        @notifyUser "<%= I18n.t('layouts.flash_messages.project_saved') %>"
+        @clearErrors($form)
+
+        $(@el).find('form').each (index, form) ->
+          $(form).attr('action', project.update_path)
+          $railsHiddenHelper = $(form).find('div').first()
+          if $railsHiddenHelper.find('input[value="put"]').length == 0
+            $railsHiddenHelper.prepend('<input name="_method" type="hidden" value="put">')
+        App.Routers.mainRouter.navigate project.edit_path, {trigger: true, replace: true}
+      error: (xhr) =>
+        @alertErrors JSON.parse(xhr.responseText).errors
+
+  submitProjectForApprovalOnCreate: (e) ->
+    @submitProjectForApproval e, "POST"

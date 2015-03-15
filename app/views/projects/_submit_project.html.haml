@@ -1,0 +1,11 @@
+.container
+  = simple_form_for([charity, project]) do |f|
+    .form-errors.project-form
+    .container
+      = render 'project_preview', project: project
+
+    .form-actions
+      = link_to '#', class: 'btn btn-small btn-inverse prev-section more-info' do
+        .sprites-arrow-to-left.pull-left
+        = t('helpers.back')
+      = f.button :submit, t('forms.actions.projects.submit_for_approval'), class: 'btn btn-small btn-inverse submit-project'

@@ -1,0 +1,5 @@
+.nested-fields
+  = f.input :change_id, collection: @changes
+  = f.input :number
+  -# = link_to_add_association 'or create a new change output', f, :change
+  = link_to_remove_association t('forms.actions.projects_changes.remove_item'), f

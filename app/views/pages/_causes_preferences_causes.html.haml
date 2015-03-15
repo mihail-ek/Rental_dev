@@ -1,0 +1,23 @@
+.container#causes-preferences-causes
+  %ul.tags.inline
+    - current_user.causes.each do |cause|
+      = render "shared/tag", { id: cause.id, icon: cause.coin(:icon), name: cause.name }
+
+  .pull-right
+    = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')
+  %h2 Who would you prefer to help?
+
+  .choices
+    .choice
+      %h3 Causes
+      .choice-list
+        - Cause.order(:name).all.each.with_index do |cause, index|
+          = render 'choice_bloc', { cause: cause, id: "#{cause.id}", sprite: cause.name.downcase,
+            name: cause.name, active: current_user.causes.include?(cause)}
+
+  .pull-right
+    = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+      .sprites-arrow-to-right.pull-right
+      = t('helpers.next')

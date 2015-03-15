@@ -1,0 +1,55 @@
+= render 'timeline/show'
+
+.container
+  .row
+    .span12
+      .row
+        .span4.help
+          %h2
+            Help
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+              .sprites-infos
+
+          .bloc
+            - 6.times do
+              .project
+                = link_to "#" do
+                  = image_tag "http://placehold.it/145x117"
+                  .name
+                    Project name
+
+            .clearfix
+            = render 'pagination'
+
+        .span4.make
+          .pull-right.actions
+            = link_to "See all" ,"#"
+          %h2
+            Make
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+              .sprites-infos
+
+          .bloc
+            - 6.times do
+              .item
+                = link_to "#" do
+                  .sprites-seeds-big
+                  .name
+                    Item name
+
+            .clearfix
+            = render 'pagination'
+
+        .span4.change
+          %h2
+            Change
+            %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+              .sprites-infos
+
+          = render 'change_column'
+
+  %h2
+    Your update wall
+    %a.infos{"data-original-title" => "Infos", "data-toggle" => "tooltip", :href => "/checkout", :title => ""}
+      %i.icon-info-sign
+  = render "project_change_update", columns: 3

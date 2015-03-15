@@ -1,0 +1,26 @@
+<tr class="selected-project" data-project-id="#{if @project then @project.id else 0}">
+  <td class="project-name">
+    <a href="#{@project.path if @project}">
+      <img src="#{@project.image_url if @project}" width="130px" />
+      <div class='name'>
+      - if @project
+        #{@project.name.truncate(40)}
+      - else
+        #{@name}
+      </div>
+    </a>
+  </td>
+  - for item in @items
+    <td>
+      <a href="#">
+        <div class="bloc" data-price="#{item.price_pennies/100}" data-color="#{item.color}">
+          <div class="title">£#{item.price_pennies/100} a #{@interval}</div>
+          <img src="#{item.icon}" data-name="#{item.name}" />
+          <img src="#{item.inactive_icon}" data-name="#{item.name}" class="inactive" />
+        </div>
+      </a>
+    </td>
+  <td>
+    <input id="amount" name="amount" placeholder="Other amount" type="text" value="" data-price="0">
+  </td>
+</tr>

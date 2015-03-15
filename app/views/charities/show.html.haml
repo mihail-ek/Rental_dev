@@ -1,0 +1,40 @@
+.charity-or-bundle
+  .container
+    .header-container
+      - if false
+        .pull-left
+          = link_to nil do
+            .sprites-facebook-like
+          = link_to nil do
+            .sprites-twitter-share
+
+      - if user_signed_in?
+        .pull-right.connect
+          - if false
+            = link_to nil do
+              .message
+                .sprites-message
+                .name Message
+          = link_to nil, class: "follow-charity", data: { active: "#{@is_following ? "true" : "false"}", charity_id: @charity.id } do
+            .follow
+              .sprites-follow
+              .name= @is_following ? "Unfollow" : "Follow"
+
+      .text
+        %h1= @charity.name
+        %p= @charity.description
+
+    %ul.nav.nav-tabs
+      %li{:class => "#{"active" if params[:action] == "show"}"}
+        %a(href="#home" data-toggle="tab") Charity Details
+      - if @charity.stories.any?
+        %li{:class => "#{"active" if params[:action] == "updates"}"}
+          %a(href="#updates" data-toggle="tab")
+            Updates
+            %span.count (#{@charity.stories.count})
+
+  .tab-content
+    #home.tab-pane.fade{:class => "#{"active in" if params[:action] == "show"}"}
+      = render 'home_tab_pane'
+    #updates.tab-pane.fade{:class => "#{"active in" if params[:action] == "updates"}"}
+      = render 'updates_tab_pane'

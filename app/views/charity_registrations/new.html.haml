@@ -1,0 +1,7 @@
+.container
+  = form_tag charity_registrations_path do
+    %label{ for: 'charity_number' }
+      = t('forms.labels.charity_registration.number')
+    %input{autofocus: "autofocus", name: "charity_number", type: "text"}
+    .form-actions
+      %input.btn{name: "commit", type: "submit", value: t('forms.actions.charity_registration.submit')}

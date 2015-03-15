@@ -1,0 +1,28 @@
+%tr
+  %td.project-name
+    .infos
+      %a{:class => "infos", :'data-original-title' => "Infos", :'data-toggle' => "tooltip", :href => "#", :title => ""}
+        .sprites-infos
+    = name
+  %td
+    = link_to "#" do
+      .bloc
+        .title £3 a month
+        .sprites-cappuccino-checkout{:'data-name' => 'cappuccino'}
+  %td
+    = link_to "#" do
+      .bloc
+        .title £5 a month
+        .sprites-round-of-drinks-checkout-inactive{:'data-name' => 'round-of-drinks'}
+  %td
+    = link_to "#" do
+      .bloc
+        .title £10 a month
+        .sprites-cinema-ticket-checkout-inactive{:'data-name' => 'cinema-ticket'}
+  %td
+    = link_to "#" do
+      .bloc
+        .title £20 a month
+        .sprites-gym-fee-checkout-inactive{:'data-name' => 'gym-fee'}
+  %td
+    = text_field_tag :amount, "", placeholder: "Other amount"

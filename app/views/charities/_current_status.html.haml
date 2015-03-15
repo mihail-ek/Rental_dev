@@ -1,0 +1,146 @@
+- if @display_menu
+  .container
+    %h1 Charity/project dashboard
+    %hr
+
+    %h1 Choose the charity or project you would like to see
+
+    %h3 Charities I am an editor
+    %ul
+      - current_user.charities_as_editor.each do |charity|
+        %li= link_to charity.name, charities_dashboard_path(charity_id: charity.id)
+
+    %h3 Charities I am a reporter
+    %ul
+      - current_user.charities_as_reporter.each do |charity|
+        %li= link_to charity.name, charities_dashboard_path(charity_id: charity.id)
+
+    %h3 Projects I am an editor
+    %ul
+      - current_user.projects_as_editor.each do |project|
+        %li
+          = link_to charities_dashboard_path(project_id: project.id) do
+            = "#{project.name} (#{project.present_status})"
+
+    %h3 Projects I am a reporter
+    %ul
+      - current_user.projects_as_reporter.each do |project|
+        %li
+          = link_to charities_dashboard_path(project_id: project.id) do
+            = "#{project.name} (#{project.present_status})"
+
+- else
+  .container
+    - if @charity
+      %h1 Charity dashboard
+      %hr
+      %h1= link_to @charity.name, @charity
+      %dl.dl-horizontal
+        %dt Description
+        %dd= @charity.description
+        %dt Address
+        %dd= @charity.address
+        %dt Number
+        %dd= @charity.number
+        %dt Leader
+        %dd= @charity.leader.try(:name)
+
+      - if can? :update, @charity
+        %hr
+
+        %h4 Payments
+        - if @charity.is_public
+          = link_to "View public page", @charity, class: 'btn'
+        - else
+          %p
+            You need to connect with GoCardless and Stripe in order to accept payments.
+            Your charity will not be visible in the website until it's done.
+        %ul
+          %li
+            - if @charity.go_cardless_merchant && @charity.go_cardless_merchant.access_token
+              Your GoCardless account (direct debit) is well configured.
+            - else
+              = link_to "Connect with GoCardless (direct debit)", gocardless_merchant_account_authorization_url(@charity.id), class: 'btn'
+          %li
+            - if @charity.stripe_merchant && @charity.stripe_merchant.access_token
+              Your Stripe account (credit card) is well configured.
+            - else
+              = link_to "Connect with Stripe (credit card)", stripe_merchant_account_authorization_url(@charity.id), class: 'btn'
+
+        %hr
+
+      %ul.inline
+        - if can? :update, @charity
+          %li= link_to "Edit charity", edit_charity_path(@charity), class: 'btn'
+
+      .row
+        .span8
+          %h2
+            Projects
+            (#{@charity.projects.count})
+          - if @charity.projects.empty?
+            No project yet --
+            = link_to "click here to add one.", new_charity_project_path(@charity)
+          - else
+            - @charity.projects.each do |project|
+              %hr
+              = render 'project_dashboard', project: project
+
+        .span4
+          %h3 Charity stats
+          %ul.unstyled
+            %li
+              Number of current donors:
+              = @charity.current_donors.count
+            %li
+              Total number of donors:
+              = @charity.donors.count
+            %li
+              Number donors wanting to give again to a project by that charity:
+              = @charity.donors_wanted_to_give_again.count
+
+          %ul.unstyled
+            %li= link_to "Create new project", new_charity_project_path(@charity), class: 'btn'
+            - if false
+              %li= link_to "Download donor statistics CSV file", "#", class: 'btn'
+
+          %hr
+
+          - if @charity.editors.any?
+            %h5 Editors
+            - @charity.editors.each do |user|
+              .colleague
+                = link_to image_tag(user.avatar(:square), width: '50px'), user
+                = user.name
+          - if @charity.reporters.any?
+            %h5 Reporters
+            - @charity.reporters.each do |user|
+              .colleague
+                = link_to image_tag(user.avatar(:square), width: '50px'), user
+                = user.name
+          - if can? :update, @charity
+            .actions
+              = link_to "Manage editors and reporters", charity_colleagues_path(@charity), class: 'btn'
+      .row
+        %hr
+        %h3 Staff at related charities
+        - @staff.each do |user|
+          = image_tag  user.avatar(:square), width: '60px'
+    - elsif @project
+      %h1 Project dashboard
+      %hr
+      = render 'project_dashboard', project: @project
+    - else
+      %h1 Charity dashboard
+      %hr
+      = link_to "Click here to add a charity", new_charity_path, class: "btn"
+
+- if current_user.has_role? :admin
+  .container
+    %h1 Makerble admin
+    %hr
+
+    %h3 Charities
+    %ul
+      - Charity.all.each do |charity|
+        %li= link_to charity.name, charities_dashboard_path(charity_id: charity.id)

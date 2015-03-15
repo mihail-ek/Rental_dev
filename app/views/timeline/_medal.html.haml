@@ -1,0 +1,9 @@
+%li
+  = link_to nil, :class => "popover-with-html placement-right",
+    :"data-content" => "<a href='#{project_path(project)}'><img src=#{story.media(:cover)} width='375px' /></a><div class='content'><h5>#{l(date.to_date)}</h5><a href='#{project_path(project)}'><h4>#{project.name}</h4></a>#{"<h4>1 child re-homed</h4>" if false}<p>#{text}</p></div>" do
+    -# :"data-content" => "<a href='#{project_path(message.project)}'><img src=#{message.image(:cover)} width='375px' /></a><div class='content'><h5>#{l(message.created_at.to_date)}</h5><a href='#{project_path(message.project)}'><h4>#{message.project.name}</h4></a>#{"<h4>1 child re-homed</h4>" if false}<p>#{message.text}</p><ul class='actions'><li><div class='sprites-fav-small'></div>Fav<span class='number'>(0)</span></li><li><div class='sprites-comment-small'></div>Comment<span class='number'>(0)</span></li><li><div class='sprites-pound-small'></div>Top up<span class='number'>(0)</span></li></ul></div>" do
+
+    .medal.medal-big
+      = image_tag change.icon(:small), width: '150px'
+      .count= number
+    %p= change.name.upcase

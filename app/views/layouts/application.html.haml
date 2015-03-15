@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %title= content_for?(:title) ? yield(:title) : "Makerble"
+    %meta{:content => content_for?(:description) ? yield(:description) : "Makerble", :name => "description"}
+    %a{href: "https://plus.google.com/100639223889780651538", rel: "publisher", style: "display: none;"} Google+
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield(:head)
+
+  %body{:class => "#{controller_name} #{action_name}"}
+    #fb-root
+    = render 'layouts/header'
+    #main-container.main-container{ "data-charity-ids-as-editor" => user_signed_in? ? current_user.charities_as_editor_ids.join(",") : '' }
+      = yield
+    = render 'layouts/footer'
+    = render 'shared/flash_message'
+    = render 'shared/alert_error'
+    = render 'shared/image_preview'

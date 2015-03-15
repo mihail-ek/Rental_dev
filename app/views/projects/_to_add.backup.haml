@@ -1,0 +1,59 @@
+- type ||= nil
+- is_intelligent_match ||= false
+
+.span4.project-to-add
+  %h4= truncate(project.name, length: 27)
+  .bloc
+    = image_tag project.image(:to_add)
+    .project-progress-stripes-small-background
+      .project-progress-stripes-small
+        - progress = project.change_score
+        - progress = progress * 9 / 10
+        - (progress / 10).times do |index|
+          %div{:class => "sprites-progress-stripe-small-#{index + 1}"}
+        - (10 - progress / 10).times do |index|
+          %div{:class => "sprites-progress-stripe-small-empty"}
+
+    .stats
+      %ul.inline
+        %li
+          %span.name Top ups
+          %span.count (#{project.top_ups.count})
+        %li
+          %span.name Makers
+          %span.count (#{project.makers.count})
+        %li
+          %span.name Followers
+          %span.count (#{project.followers.count})
+
+      %p= truncate project.problem, length: 80
+
+      .actions
+        = link_to project do
+          View
+
+    - if type && type == 'button'
+      = link_to nil, class: "call-to-action btn btn-large btn-inverse" do
+        .sprites-plus-sign-white.pull-right
+        %span.name Add project
+    - else
+      .buttons
+        .go-back
+          = link_to "#" do
+            %h5 Go back
+            .sprites-arrow-go-back
+        .swap
+          = link_to "#" do
+            %h5 Swap
+            .sprites-swap
+        .select
+          = link_to "#" do
+            .sprites-select
+
+      - if is_intelligent_match
+        .intelligent-match
+          .sprites-thump-up.pull-left
+          %h5 Intelligent match
+          %p
+            You love music, the Choir With No Name
+            uses music to tackle homelessness

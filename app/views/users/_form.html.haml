@@ -1,0 +1,29 @@
+= simple_form_for(@user) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      .alert.alert-error
+        The form contains #{pluralize(@user.errors.count, "error")}.
+      %ul.alert.alert-error
+        - @user.errors.full_messages.each do |msg|
+          %li
+            * #{msg}
+
+  .form-inputs
+    = f.input :name, autofocus: true
+    = f.input :avatar
+    .change-password
+      = f.input :current_password
+      = f.input :password
+      = f.input :password_confirmation
+    - if @user.uid && !@user.uid.empty?
+      %p
+        %em Your facebook is connected
+    - else
+      .field
+        = link_to "Connect my facebook account", omniauth_authorize_path('user', :facebook)
+    .field
+      = link_to "Change my password", "", class: 'change-password-link'
+
+  .form-actions
+    = f.button :submit, "Save changes"
+    = link_to 'Cancel', @user, class: 'btn'

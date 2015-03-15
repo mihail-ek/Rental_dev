@@ -1,0 +1,5 @@
+.bloc{'data-id' => id, 'data-icon' => cause.coin(:icon), 'data-name' => name, :class => "#{"active" if active}"}
+  .name
+    %span= truncate(name, length: 35)
+  = image_tag cause.coin(:small), width: '100px', class: 'active'
+  = image_tag cause.inactive_coin(:small), width: '100px', class: 'inactive'

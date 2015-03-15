@@ -1,0 +1,40 @@
+%table.table-striped.table-bordered{ width:"100%" }
+  %thead
+    %tr
+      %th{width: "50%"} Help Fields
+      %th{width: "50%"} Value
+  %tbody
+    - project.help_inputs.each do |input|
+      %tr
+        %td= t("simple_form.labels.project.#{input.to_s}")
+        %td= present_project_field(project, project.send(input.to_s))
+%table.table-striped.table-bordered{ width:"100%" }
+  %thead
+    %tr
+      %th{width: "50%"} Make Fields
+      %th{width: "50%"} Value
+  %tbody
+    - project.make_inputs.each do |input|
+      %tr
+        %td= t("simple_form.labels.project.#{input.to_s}")
+        %td= present_project_field(project, project.send(input.to_s))
+%table.table-striped.table-bordered{ width:"100%" }
+  %thead
+    %tr
+      %th{width: "50%"} Change Fields
+      %th{width: "50%"} Value
+  %tbody
+    - project.change_inputs.each do |input|
+      %tr
+        %td= t("simple_form.labels.project.#{input.to_s}")
+        %td= present_project_field(project, project.send(input.to_s)).html_safe
+%table.table-striped.table-bordered{ width:"100%" }
+  %thead
+    %tr
+      %th{width: "50%"} More Info Fields
+      %th{width: "50%"} Value
+  %tbody
+    - project.more_info_inputs.each do |input|
+      %tr
+        %td= t("simple_form.labels.project.#{input.to_s}")
+        %td= present_project_field(project, project.send(input.to_s)).html_safe

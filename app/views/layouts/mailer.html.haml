@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+  %body
+    = link_to root_url do
+      = image_tag "#{root_url}/assets/mails/header.png"
+    #main-container
+      = yield
+    Follow us on
+    = link_to "Facebook.com/Makerble", "http://www.facebook.com/Makerble"
+    and
+    = link_to "Twitter.com/Makerble", "http://twitter.com/makerble"

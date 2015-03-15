@@ -1,0 +1,4 @@
+<li class='project-basket-price'>
+  <div class="pull-right price">£#{@price}.00</div>
+  #{@name}
+</li>

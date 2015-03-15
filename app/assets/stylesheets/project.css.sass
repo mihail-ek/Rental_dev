@@ -1,0 +1,160 @@
+#help-make-column
+  .boxportfolio2
+    padding-right: 5px // useful for isotope
+
+ul.change-list
+  margin: 0
+
+li.change-item
+  list-style: none
+  width: 85px
+  display: block
+  float: left
+  text-align: center
+
+  &:not(:first-child)
+    margin-left: 20px
+
+  p
+    margin-top: 20px
+
+.media-list
+  overflow: auto
+  padding: 40px 32px 30px
+  position: relative
+  [class*="sprites-"]
+    position: absolute
+    top: 100px
+  .sprites-arrow-to-left-media
+    left: 15px
+  .sprites-arrow-to-right-media
+    right: 15px
+
+  .media-item
+    float: left
+    list-style: none
+    img
+      +border-radius(8px)
+    &:not(:first-child)
+      margin-left: 21px
+    .caption
+      margin-top: 10px
+      +font-size(15)
+
+#project
+  #help-make-change
+    .call-to-action
+      margin-right: 27px
+      width: 299px
+
+    .change
+      background-color: whitesmoke
+
+    .project-progress-stripes
+      height: auto
+      padding: 0
+
+  .header-container
+    text-align: center
+    h1
+      margin-top: 30px
+    p
+      margin: -1px 0 23px
+
+  h2
+    +font-size(22)
+
+  .faq
+    +font-size(15)
+    label
+      margin-bottom: 15px
+      +font-size(15)
+    textarea
+      width: 98%
+    .submit
+      min-width: 95px
+      margin-top: 30px
+  .faq-list
+    margin: 27px 0
+  .faq-item
+    font-family: "Quicksand", sans-serif
+    text-transform: uppercase
+    font-weight: bold
+    +font-size(20)
+    a
+      text-decoration: underline
+      line-height: 26px
+    .infos
+      text-transform: none
+      text-decoration: none
+      +font-size(13)
+    .delete
+      text-transform: none
+      text-decoration: none
+      +font-size(13)
+    .answer
+      text-transform: none
+      margin-top: 10px
+      font-weight: normal
+      +font-size(14)
+    .submit
+      padding: 14px
+      margin: 4px 0 30px
+      text-decoration: none
+      +font-size(18)
+
+  .span4 .actions
+    margin-top: 6px
+
+  .charity-informations
+    .bloc
+      padding: 25px
+    img
+      +border-radius(8px)
+    ul
+      margin: 30px 0
+      +font-size(15)
+    h4
+      text-transform: none
+      font:
+        weight: normal
+        family: "Piron v2", sans-serif
+      +font-size(15)
+    .established-fund-supporters
+      a:not(:last-of-type)
+        margin-right: 6px
+
+  .change
+    text-align: center
+    .score
+      padding-top: 35px
+      padding-bottom: 50px
+      h5
+        font-size: 24px
+        margin-bottom: 23px
+    .project-progress-stripes
+      height: 79px
+      background-color: #f5f5f5
+      width: 100%
+      padding: 28px 0
+    .call-to-action
+      margin-top: 24px
+      margin-bottom: -68px
+
+#total-price
+  display: none
+  margin-top: 17px
+  font-size: 19px
+  border-top: 1px solid
+  padding-top: 10px
+
+.cancel-subscription
+  margin: 7px 15px
+  font-size: 12px
+
+.simple_form
+  .checkbox
+    input[type="checkbox"] ~ .control-group
+      display: none
+    input[type="checkbox"]:checked ~ .control-group
+      display: initial

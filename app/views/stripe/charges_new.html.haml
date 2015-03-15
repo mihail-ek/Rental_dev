@@ -1,0 +1,6 @@
+.container
+  = form_tag create_stripe_charge_path do
+    %article
+      %label.amount
+        %span Amount: $5.00
+    %script.stripe-button{"data-amount" => "500", "data-description" => "A month's subscription", "data-key" => Rails.configuration.stripe[:publishable_key], :src => "https://checkout.stripe.com/v2/checkout.js"}

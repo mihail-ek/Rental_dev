@@ -1,0 +1,6 @@
+.nested-fields
+  = f.input :make_id, collection: @makes
+  = f.input :cost, label: t('forms.labels.projects_makes.cost')
+  = f.input :intent, label: t('forms.labels.projects_makes.intent')
+  -# = link_to_add_association 'or create a new budget item', f, :make
+  = link_to_remove_association t('forms.actions.projects_makes.remove_item'), f

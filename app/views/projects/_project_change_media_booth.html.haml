@@ -1,0 +1,17 @@
+%h2 Media
+
+.bloc
+  %ul.media-list.unstyled
+    = link_to "#" do
+      .sprites-arrow-to-left-media
+    = link_to "#" do
+      .sprites-arrow-to-right-media
+    - 3.times do
+      %li.media-item
+        = link_to nil do
+          %img{:alt => "", :src => "http://lorempixel.com/205/165"}
+        .caption
+          = Faker::Lorem.word
+          = Faker::Lorem.word
+
+.clearfix

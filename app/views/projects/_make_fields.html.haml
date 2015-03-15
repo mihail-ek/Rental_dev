@@ -1,0 +1,5 @@
+.nested-fields
+  = f.input :name
+  = f.input :sanitized_name
+  = f.association :make_change_category, :collection => MakeChangeCategory.all
+  = f.input :icon

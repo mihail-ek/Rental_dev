@@ -1,0 +1,52 @@
+.bloc
+  .connect
+    - if user_signed_in? && current_user != @user
+      = link_to nil, class: "follow-user", data: { active: "#{@is_following ? "true" : "false"}", user_id: @user.id } do
+        .follow
+          .sprites-follow
+          .name= @is_following ? "Unfollow" : "Follow"
+    - if false && (!user_signed_in? || current_user != @user)
+      = link_to "#" do
+        .sprites-message
+        .name
+          Message
+
+  .picture-and-score
+    .profile-picture
+      = image_tag @user.avatar(:square), class: "img-flag", width: '117px'
+
+    .score
+      %h5= "#{@user.name}'s Makerble change"
+      - @user.change_score.to_s.chars.map(&:to_i).each do |digit|
+        %div{class: "number sprites-digit-#{digit}"}
+
+  %hr
+
+  - if false
+    .medals
+      .pull-right.actions
+        = link_to "See all" ,"#"
+      %h5 Medals (25)
+      .list
+        - 3.times do
+          .medal
+            = link_to nil do
+              .sprites-medal
+        - 1.times do
+          .medal
+            = link_to nil do
+              .sprites-medal-inactive
+
+  %ul.inline.statistics
+    %li
+      .number= @user.inspired.count
+      .name Inspired
+    %li
+      .number= @user.helped_projects.count
+      .name= @user.helped_projects.count < 2 ? "Project" : "Project".pluralize
+    %li
+      .number= @user.followers.count
+      .name= @user.followers.count < 2 ? "Follower" : "Follower".pluralize
+    %li
+      .number= @user.follows_by_type('User').count
+      .name= @user.follows_by_type('User').count < 2 ? "Following" : "Following".pluralize

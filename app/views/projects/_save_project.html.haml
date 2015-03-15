@@ -1,0 +1,31 @@
+#save-project
+  .container
+    %ul.nav.nav-tabs
+      %li.help.active
+        %a(href="#help-form" data-toggle="tab") Help
+      %li.make
+        %a(href="#make-form" data-toggle="tab") Make
+      %li.change
+        %a(href="#change-form" data-toggle="tab") Change
+      %li.more-info
+        %a(href="#more-info-form" data-toggle="tab") More info
+      %li.submit-project
+        %a(href="#submit-project" data-toggle="tab") Review and submit project
+
+    .wrapper-sprites-line-help-make-change.sprites-line
+
+  .tab-content
+    #help-form.tab-pane.fade.in.active
+      = render 'help_form', charity: @charity, project: @project, causes: @causes
+    #make-form.tab-pane.fade
+      = render 'make_form', charity: @charity, project: @project
+    #change-form.tab-pane.fade
+      = render 'change_form', charity: @charity, project: @project
+    #more-info-form.tab-pane.fade
+      = render 'more_info_form', charity: @charity, project: @project
+    #submit-project.tab-pane.fade
+      = render 'submit_project', charity: @charity, project: @project
+
+  :coffee
+    $ ->
+      $('.image-with-preview').previewImage()

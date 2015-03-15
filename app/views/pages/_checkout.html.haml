@@ -1,0 +1,25 @@
+.container
+  %ul.nav.nav-tabs
+    %li.checkout.active
+      %a(href="#checkout" data-toggle="tab")
+        %span.step Step 1
+        Checkout
+    %li.payment
+      %a(href="#" data-toggle="tab-inactive")
+        %span.step Step 2
+        Payment
+    %li.confirmation
+      %a(href="#" data-toggle="tab-inactive")
+        %span.step Step 3
+        Confirmation
+
+  .wrapper-sprites-line-three-parts
+    .sprites-line-three-parts
+
+  .tab-content
+    #checkout.tab-pane.fade.active.in
+      = render 'checkout_tab_pane'
+    #payment.tab-pane.fade
+      = render 'payment_tab_pane'
+    #confirmation.tab-pane.fade
+      = render 'confirmation_tab_pane'

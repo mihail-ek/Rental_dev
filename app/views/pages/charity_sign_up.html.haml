@@ -1,0 +1,125 @@
+.container
+  %h1.text-center Share the change you make with the world
+
+  %h2.text-center Attract new donors
+  %h2.text-center Build trust and make new donors loyal
+  %h2.text-center Inspire donors to share the change you're making with their friends
+
+  %br
+  %h3.text What Is Makerble
+  %ul
+    %li Makerble is a community of people looking to be connected to charitable projects that match their interests
+    %li Donors select an issue and location and Makerble matches them to suitable projects
+    %li Donors can then choose to donate a monthly amount to the suggested project
+    %li We ask charities to feedback as the project progresses and to share your impact with donors once the project is over
+    %li Here is a video of how it works:
+
+  %iframe{allowfullscreen: "", frameborder: "0", width: "560", height: "315", src: "https://www.youtube.com/embed/PUe5tkE0_EI", class: 'center-block'}
+
+  %br
+  = link_to personal_sign_up_path, class: "btn btn-small btn-inverse" do
+    .sprites-arrow-to-right.pull-right
+    = t('helpers.register')
+
+  %br
+  %br
+  %h3.text What You Need To Get Started
+  %ul
+    %li Your Details: your name, profile picture
+    %li Charity Details: your charity number, registered address, vision statement
+    %li Project Details: photo, budget, description of the need, description of the intervention, list of the potential outputs
+    %li Bank Details: account number, sort code
+    %li Signed Starter Pack including CHV1 form allowing Gift Aid to be reclaimed and Contract agreeing to use our platform
+    %li You can save your progress at any point and return to it later. You do not need to fill in all the details at once
+
+  = link_to personal_sign_up_path, class: "btn btn-small btn-inverse" do
+    .sprites-arrow-to-right.pull-right
+    = t('helpers.register')
+
+  %br
+  %br
+  %h3.text Simple Projects
+  %ul
+    %li Projects consist of:
+    %ul
+      %li A photo and description of the need;
+      %li A photo, description and budget for the intervention;
+      %li A list of the potential outputs
+    %li Charities can have more than one project on Makerble at any given time.
+    %li Where possible, we encourage you to provide a diversity of projecs that take place in different locations or could appear under different cause categories*.
+
+  %u The 9 cause categories on Makerble are:
+  %center
+    %img{:alt => "Causes Overview", :src => "/assets/help/causes-overview.png"}
+
+  %br
+  %br
+  %u Example Projects:  
+  %center
+    %img{:alt => "Causes Overview", :src => "/assets/help/project1-overview.png"}
+  %br 
+  %center
+    %img{:alt => "Causes Overview", :src => "/assets/help/project2-overview.png"}
+
+  %br
+  = link_to personal_sign_up_path, class: "btn btn-small btn-inverse" do
+    .sprites-arrow-to-right.pull-right
+    = t('helpers.register')
+
+  %br
+  %br
+  %h3.text Easy Project Updates
+  %ul
+    %li Once a month, upload a picture with a description that conveys the project’s progress or a tweet-style update.
+    %li You can post updates more often than that if you wish. Our algorithm rewards charities for posting updates that donors can see.
+    %li We design Badges for every type of budget item and output.
+    %li Once your project is complete, upload a picture of the completed project with a description of what was achieved.
+    %li Once your project is complete, enter the number of each output that the project achieved.
+    %li Examples of progress updates:
+    %ul
+      %li ‘So excited! Just planned our next workshop. Going to ask young people what their dreams are’
+      %li ‘Chatted to Effie in Ghana this afternoon. The bricks have arrived and the build starts tomorrow!’
+      %li ‘The trip was cancelled this afternoon. There was flooding and so we couldn’t travel to the museum.
+      We’re looking into whether we can rearrange it for next week, weather dependent and will be in touch with an update soon.’
+    %li Examples of change (output) updates:
+    %ul
+      %li 10 workshop attendees / 100 bricks bought / 5 trees planted
+    %li Makerble turns your output updates into Change Updates personalised to each donor for them to proudly display on their profiles.
+    %li Donors can share updates through social media.
+
+  %center
+    %img{:alt => "Causes Overview", :src => "/assets/help/updates.png"}
+
+  %h3.text How We Process Donations
+
+  %ul
+    %li There are no joining fees or monthly fees for using Makerble.
+    %li If you are a UK charity we reclaim Gift Aid on your behalf and it is paid directly into your bank account by HMRC.
+    %li Our fee is equivalent to 4% of the gross donation (the original donation + Gift Aid) and this is deducted from the Gift Aid.
+    %li You are in complete control of your donations.
+    %li We use the online payment systems Stripe and GoCardless that allows you to withdraw donations from your online account to your bank account at any time.
+    %li We suggest you withdraw funds monthly.
+    %li From your Charity Dashboard you can view your donation statistics.
+    %li When Gift Aid is not added, our fee is 4% of the original donation.
+
+  = link_to personal_sign_up_path, class: "btn btn-small btn-inverse" do
+    .sprites-arrow-to-right.pull-right
+    = t('helpers.register')
+
+  %br
+  %br
+  %h3.text Frequently Asked Questions
+
+  Are funds restricted?
+  %ul
+    %li At your discretion, donations you receive on Makerble can be used to displace unrestricted funding that had previously been allocated to a project.
+    %li Donations you receive on Makerble are pseudo-restricted meaning you have the freedom to re-allocate them in extreme circumstances.
+    %li Moving donations between projects will be published to donors and may reduce their willingness to donate to your projects future.
+
+  %p
+    If you have questions please contact
+    = mail_to 'charities@makeworldwide.com', 'charities@makeworldwide.com'
+    asking us to give you a call or respond by email, whichever you prefer.
+    
+  %p
+    *Makerble may restrict the number of simultaneous projects that a single charity can have available for donations.

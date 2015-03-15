@@ -1,0 +1,7 @@
+- unless field.multiple?
+  = form.select field.method_name, field.enum, { include_blank: true }.reverse_merge({ selected: field.form_value[0] }), field.html_attributes.reverse_merge({ data: { enumeration: true, otherregulator: CharityRegulators.other, othervalue: field.form_value[1] }, placeholder: t('admin.misc.search') })
+  %input{type: :text, class: 'select-other-input', disabled: true}
+
+:coffeescript
+  $(document).on "rails_admin.dom_ready", ->
+    $('form').addOtherInputBehavior()

@@ -1,0 +1,9 @@
+<li class="tag" data-id="#{@id}" data-name="#{@name}">
+  <a href="#">
+    <div class="sprites-close-black pull-right"></div>
+    - if @icon
+      <img alt="icon" class="icon" src="#{@icon}">
+    <span class="name">#{@name}</span>
+    <div class="sprites-tag-arrow"></div>
+  </a>
+</li>

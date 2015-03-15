@@ -1,0 +1,67 @@
+<div class="span4 project-to-add" data-project-id="#{@project.id}" data-previous-project-id="#{@previousProjectID}">
+  <div class="bloc">
+    <a href="#{@project.path}">
+    <div class="cover">
+      <h4>#{@project.name.truncate(80)}</h4>
+      <img alt="#{@project.image_alt}" src="#{@project.image_url}">
+    </div>
+    </a>
+    -# <img alt="Icon" src="#{@project.change_icon_url}">
+    <div class="project-progress-stripes-small-background">
+    <img alt="Icon" src="#{@project.make_icon}">
+    <div class="project-progress-stripes-small">
+      - progress = @project.progress
+      - progress = 10 if @project.progress < 10
+      - _(parseInt(progress / 10)).times (index) ->
+        <div class="sprites-progress-stripe-small-#{index+1}"></div>
+      - _(parseInt(10 - progress / 10)).times (index) ->
+        <div class="sprites-progress-stripe-small-empty"></div>
+      <div class="medal">
+        <img alt="Icon" src="#{@project.change_icon}" width="40px">
+        <div class="count">#{@project.change_count}</div>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <ul class="inline">
+      <li>
+        <span class="name">Makers</span>
+        <span class="count">(#{@project.makers_count})</span>
+      </li>
+    </ul>
+    <p>#{@project.problem.truncate(120)}</p>
+    <div class="actions">
+      <a href="#{@project.path}">Find out more
+      </a></div>
+    </div>
+    <div class="buttons">
+      - if @previousProjectID
+        <div class="go-back">
+          <a href="#">
+            <h5>Go back</h5>
+            <div class="sprites-arrow-go-back"></div>
+          </a>
+        </div>
+      <div class="swap">
+        <a href="#">
+          <h5>Swap</h5>
+          <div class="sprites-swap"></div>
+        </a>
+      </div>
+      <div class="select">
+        <a href="#">
+          <div class="sprites-select-inactive"></div>
+        </a>
+      </div>
+    </div>
+    - if @project.has_intelligent_match
+      <div class="intelligent-match">
+        <div class="sprites-thump-up pull-left"></div>
+        <h5>Intelligent match</h5>
+        <p>
+        You love music, the Choir With No Name
+        uses music to tackle homelessness
+        </p>
+      </div>
+  </div>
+</div>

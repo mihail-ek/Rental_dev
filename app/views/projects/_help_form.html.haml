@@ -1,0 +1,29 @@
+.container
+  = link_to charities_dashboard_path, class: "btn btn-small btn-inverse" do
+    .sprites-arrow-to-right.pull-right
+    = t('helpers.skip_project_creation')
+
+  = simple_form_for([charity, project]) do |f|
+    .form-errors.help-form
+    .form-inputs
+      = f.input :help_statement, autofocus: true
+      = f.input :help_description, as: :text, input_html: { rows: 5 }
+      = f.input :beneficiaries
+
+      = f.input :problem_list
+      = f.input :problem_statistic_list
+
+      - src = (project.help_image? && project.help_image.url) || ""
+      - title = project.help_image_file_name || ""
+      = f.input :help_image, input_html: { class: 'image-with-preview', data: {src: src, title: title } }
+
+      = f.label :tags
+      = f.input :tag_list, as: :hidden
+
+      = render 'causes_sub_causes', f: f, project: project, causes: causes
+
+    .form-actions
+      = f.button :submit, t('helpers.submit.submit', model: 'Project'), class: 'btn btn-small btn-inverse save-project'
+      = link_to '#', class: 'btn btn-small btn-inverse next-section make' do
+        .sprites-arrow-to-right.pull-right
+        = t('helpers.next')

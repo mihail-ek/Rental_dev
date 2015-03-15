@@ -1,0 +1,2 @@
+module WelcomeMessagesHelper
+end
